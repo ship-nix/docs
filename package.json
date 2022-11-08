@@ -1,0 +1,28 @@
+{
+  "name": "ship-nix-docs",
+  "version": "1.0.0",
+  "description": "Documentation for ship-nix.com",
+  "scripts": {
+    "start": "$NODE_PATH/@11ty/eleventy/cmd.js --serve",
+    "build": "ELEVENTY_PRODUCTION=true eleventy",
+    "watch": "npx eleventy --watch",
+    "debug": "DEBUG=* npx eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ship-nix/docs.git"
+  },
+  "author": "Lars Lillo Ulvestad <lars@lillo.dev> (https://www.ship-nix.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ship-nix/docs/issues"
+  },
+  "homepage": "https://github.com/ship-nix/docs",
+  "devDependencies": {
+
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^0.11.1"
+  },
+  "main": ".eleventy.js"
+}
