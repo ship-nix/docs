@@ -16,24 +16,24 @@
           bundle = buildPackage.buildNpmPackage {
             src = ./.;
             npmBuild = "npm run build";
-            extraEnvVars = { NODE_ENV = "production"; };
+            extraEnvVars = { NODE_ENV = "production"; ELEVENTY_PRODUCTION = "true"; };
           };
-          nodeDependencies = buildPackage.mkNodeModules { src = ./.; pname = "npm"; version = "8"; };
+          nodeDependencies = buildPackage.mkNodeModules {
+            src = ./.;
+            pname = "npm";
+            version = "8";
+          };
         in
         {
           defaultPackage = pkgs.stdenv.mkDerivation
             (
               {
                 name = "nodeserver-pkg";
-                buildInputs = [ pkgs.nodejs pkgs.nodePackages.postcss-cli ];
+                buildInputs = [ pkgs.nodejs ];
                 src = ./.;
                 installPhase = '' 
-                      export NODE_ENV=production
-                      export NODE_PATH=${nodeDependencies}/node_modules
-                      export npm_config_cache=${nodeDependencies}/config-cache
-                      mkdir -p $out
-                      npm run build
-                      cp -r ./dist/. $out
+                      mkdir $out
+                      cp -r ${bundle}/. $out
                     '';
               }
             );
@@ -49,7 +49,6 @@
                       export NODE_ENV=development
                       export NODE_PATH=${nodeDependencies}/node_modules
                       export npm_config_cache=~/.npm
-                      mkdir -p $out/bin
                       echo "Welcome to your nix development shell"
                       echo "Run 'npm run watch' to run dev server"
                     '';

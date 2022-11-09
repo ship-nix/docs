@@ -4,9 +4,9 @@
   "description": "Documentation for ship-nix.com",
   "scripts": {
     "start": "$NODE_PATH/@11ty/eleventy/cmd.js --serve",
-    "build": "ELEVENTY_PRODUCTION=true eleventy",
-    "watch": "npx eleventy --watch",
-    "debug": "DEBUG=* npx eleventy"
+    "build": "eleventy --output=dist",
+    "watch": "$NODE_PATH/@11ty/eleventy/cmd.js --watch",
+    "debug": "DEBUG=* $NODE_PATH/@11ty/eleventy/cmd.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +18,9 @@
     "url": "https://github.com/ship-nix/docs/issues"
   },
   "homepage": "https://github.com/ship-nix/docs",
-  "devDependencies": {
-
-  },
   "dependencies": {
-    "@11ty/eleventy": "^0.11.1"
+    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-navigation": "^0.3.5"
   },
   "main": ".eleventy.js"
 }
