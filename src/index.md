@@ -6,4 +6,4 @@ eleventyNavigation:
   title: All of the mammals
 ---
 
-Hello!
+Ho!

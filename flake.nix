@@ -13,11 +13,6 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
           buildPackage = pkgs.callPackage nix-npm-buildpackage { };
-          bundle = buildPackage.buildNpmPackage {
-            src = ./.;
-            npmBuild = "npm run build";
-            extraEnvVars = { NODE_ENV = "production"; ELEVENTY_PRODUCTION = "true"; };
-          };
           nodeDependencies = buildPackage.mkNodeModules {
             src = ./.;
             pname = "npm";
@@ -31,10 +26,13 @@
                 name = "nodeserver-pkg";
                 buildInputs = [ pkgs.nodejs ];
                 src = ./.;
-                installPhase = '' 
-                      mkdir $out
-                      cp -r ${bundle}/. $out
-                    '';
+                installPhase = ''
+                  export NODE_ENV=production
+                  export NODE_PATH=${nodeDependencies}/node_modules
+                  export npm_config_cache=${nodeDependencies}/config-cache
+                  mkdir $out
+                  ${nodeDependencies}/node_modules/@11ty/eleventy/cmd.js --output $out
+                '';
               }
             );
           # defaultPackage = bundle;
