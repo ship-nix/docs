@@ -35,7 +35,6 @@
                 '';
               }
             );
-          # defaultPackage = bundle;
           devShell = pkgs.mkShell
             (
               {
@@ -50,7 +49,6 @@
                       echo "Welcome to your nix development shell"
                       echo "Run 'npm run watch' to run dev server"
                     '';
-                # npm config set package-lock-only=true
               }
             );
         }
