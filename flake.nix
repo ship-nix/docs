@@ -49,7 +49,7 @@
                       ln -s $NODE_PATH node_modules
                       export npm_config_cache=~/.npm
                       echo "Welcome to your nix development shell"
-                      echo "Run 'npm run watch' to run dev server"
+                      echo "Run 'npm run start' to run dev server"
                     '';
               }
             );
