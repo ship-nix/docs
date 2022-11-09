@@ -32,6 +32,7 @@
                   export npm_config_cache=${nodeDependencies}/config-cache
                   mkdir $out
                   ${nodeDependencies}/node_modules/@11ty/eleventy/cmd.js --output $out
+                  .$src/bin/tailwindcss-linux-x64 -i $src/index.css -o $out/app.css
                 '';
               }
             );
@@ -45,6 +46,7 @@
                 shellHook = '' 
                       export NODE_ENV=development
                       export NODE_PATH=${nodeDependencies}/node_modules
+                      ln -s $NODE_PATH node_modules
                       export npm_config_cache=~/.npm
                       echo "Welcome to your nix development shell"
                       echo "Run 'npm run watch' to run dev server"
