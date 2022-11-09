@@ -7,7 +7,7 @@
     <title>{{ title }} - ship-nix documentation</title>
     <link rel="stylesheet" href="/app.css">
 </head>
-<body>
+<body class="relative">
     <div class="base-layout">
         <header class="md:fixed border-b w-full px-4 bg-white h-[60px] flex justify-between items-center z-50" data-header>
             <a href="/" class="font-bold">⛵ ship-nix docs</a>
@@ -38,15 +38,11 @@
             {{ content| safe }}
             </article>
         </main>
-        <aside data-toc class="md:fixed pt-[100px] right-0 max-w-[18rem] w-full">
-            <div class="pl-4 font-bold pb-4">Content</div>
+        
+        <aside id="toc" data-toc class="md:fixed pt-[100px] right-0 max-w-[18rem] w-full">
             <div class="max-w-[18rem] text-sm px-4 text-red-700">{{ content | toc | safe }}</div>       
         </aside>
     </div>
-    <script>
-        window.addEventListener("hashchange", function () {
-            window.scrollTo(window.scrollX, window.scrollY - 90);
-        });
-    </script>
+    <script src="/app.js"></script>
 </body>
 </html>

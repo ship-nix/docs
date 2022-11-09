@@ -5,4 +5,5 @@ eleventyNavigation:
   key: Providers
   title: Staging environment
   parent: Servers
+  order: 5
 ---

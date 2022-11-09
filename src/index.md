@@ -2,7 +2,7 @@
 title: Introduction
 layout: "base.njk"
 eleventyNavigation:
-  key: Introduction
+  key: GetStarted
   title: Introduction
 ---
 

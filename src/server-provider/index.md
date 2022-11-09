@@ -2,7 +2,6 @@
 title: Server providers
 layout: "base.njk"
 eleventyNavigation:
-  key: Providers
+  key: ServerProviders
   title: Server providers
-  parent: Servers
 ---

@@ -1,8 +1,9 @@
 ---
-title: Server starters
+title: SSH access
 layout: "base.njk"
 eleventyNavigation:
-  key: Providers
-  title: Server starters
+  key: SSH
+  title: SSH access
   parent: Servers
+  order: 6
 ---

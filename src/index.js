@@ -1,1 +1,5 @@
-import "tw-elements";
+// import "tw-elements";
+
+window.addEventListener("hashchange", function () {
+  window.scrollTo(window.scrollX, window.scrollY - 100);
+});
