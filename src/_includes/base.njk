@@ -5,16 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - ship-nix documentation</title>
+    <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-    <header class="bg-red-200">
-        <h1>{{ title }}</h1>
-    </header>
-    <nav>
-        <h2>Content</h2>
-        {{ collections.all | eleventyNavigation | eleventyNavigationToHtml | safe }}</nav>
-    <main>
-        {{ content| safe }}
-    </main>
+    <div class="base-layout">
+        <header class="md:fixed border-b w-full px-4 bg-white h-[60px] flex justify-between items-center z-50" data-header>
+            <a href="/" class="font-bold">⛵ ship-nix docs</a>
+            <a href="https://ship-nix.com">Home</a>
+        </header>
+        <aside class="md:fixed pt-[100px]" data-sidebar>
+{% set navPages = collections.all | eleventyNavigation %}
+{% macro renderNavListItem(entry) -%}
+<li{% if entry.url == page.url %} class="active-topic pl-5" {% else %} class="pl-5" {% endif %}>
+  <a href="{{ entry.url }}">{{ entry.title }}</a>
+{%- if entry.children.length -%}
+  <ul>
+    {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
+  </ul>
+{%- endif -%}
+</li>
+{%- endmacro %}
+
+<ul>
+{%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
+</ul>
+        </aside>
+        <main data-main class="border-x w-full pt-[100px] px-20 min-h-screen">
+            <article class="prose prose-red">
+            
+            <h1>{{title}}</h1>
+            
+            {{ content| safe }}
+            </article>
+        </main>
+        <aside data-toc class="md:fixed pt-[100px] right-0 max-w-[18rem] w-full">
+            <div class="pl-4 font-bold pb-4">Content</div>
+            <div class="max-w-[18rem] text-sm px-4 text-red-700">{{ content | toc | safe }}</div>       
+        </aside>
+    </div>
+    <script>
+        window.addEventListener("hashchange", function () {
+            window.scrollTo(window.scrollX, window.scrollY - 90);
+        });
+    </script>
 </body>
 </html>

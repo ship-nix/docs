@@ -6,8 +6,6 @@ eleventyNavigation:
   title: Introduction
 ---
 
-# Introduction
-
 **ship-nix** is a service for provisioning **NixOS** servers in a few minutes from a web interface.
 
 You can use ship-nix to initiate a starter project with good defaults and host it on DigitalOcean.
@@ -48,6 +46,10 @@ On nixos.org, you can search for all packages that are provided via the registry
 Also, on nixos.org, you can search for every configuration option available.
 
 Try to for example search for `nginx`, and see all the options that comes up related to configuring nginx.
+
+```bash
+hello
+```
 
 You can also try to search for `services.nginx` to find all the options within that namespace, exluding results from other services that have nginx options, but not directly linked to the nginx service.
 

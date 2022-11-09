@@ -1,3 +1,46 @@
 @tailwind base;
+
+.base-layout {
+    display: grid;
+    grid-template-columns: 18rem 1fr 1fr 18rem;
+    grid-template-rows: max-content;
+    grid-template-areas: 
+        "header header header header"
+        "sidebar main main toc";
+}
+
+:not(.active-topic) .active-topic  {
+    font-weight: bolder;
+}
+
+.active-topic li:not(.active-topic) {
+    font-weight: normal;
+}
+
+.active-topic li.active-topic {
+    font-weight: bold;
+}
+
+[data-header] {
+    grid-area: header;
+}
+
+[data-sidebar] {
+    grid-area: sidebar;
+}
+
+[data-main] {
+    grid-area: main;
+}
+
+[data-toc] {
+    grid-area: toc;
+}
+
+[data-toc] li {
+    padding-left: 0.7rem;
+}
+
 @tailwind components;
 @tailwind utilities;
+
