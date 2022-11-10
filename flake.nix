@@ -37,6 +37,7 @@
                 ${nodeDependencies}/node_modules/@11ty/eleventy/cmd.js --output $out
                 $src/bin/tailwindcss-linux-x64 -i $src/src/index.css -o $out/app.css --minify
                 ${pkgs.esbuild}/bin/esbuild $src/src/index.js --bundle --outfile=$out/app.js
+                cp -r src/images/. $out/images
               '';
             };
           devShell = pkgs.mkShell
