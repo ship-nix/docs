@@ -1,9 +1,9 @@
 ---
-title: Upgrading NixOs
+title: Upgrading NixOS
 layout: "base.njk"
 eleventyNavigation:
-  key: UpgradingNixos
-  title: Upgrading NixOs
+  key: UpgradingNixOS
+  title: Upgrading NixOS
   parent: Servers
   order: 7
 ---

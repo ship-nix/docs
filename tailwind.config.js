@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.njk",
+    "./src/**/*.md",
     process.env.NODE_PATH + "/tw-elements/dist/js/**/*.js",
   ],
   theme: {

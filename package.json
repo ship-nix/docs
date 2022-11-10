@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Documentation for ship-nix.com",
   "scripts": {
-    "start": "npx concurrently \"npm run start:eleventy\" \"npm run start:tw\" \"npm run start:js\"",
+    "start": "npx concurrently \"npm run start:eleventy\" \"npm run start:tw\" \"npm run start:js\" & npm run start:assets",
     "debug": "DEBUG=* $NODE_PATH/@11ty/eleventy/cmd.js",
     "start:eleventy": "$NODE_PATH/@11ty/eleventy/cmd.js --serve",
     "start:tw": "npx tailwindcss -i src/index.css -o dist/app.css --watch",
-    "start:js": "esbuild src/index.js --outfile=dist/app.js --watch --bundle --sourcemap"
+    "start:js": "esbuild src/index.js --outfile=dist/app.js --watch --bundle --sourcemap",
+    "start:assets": "cp -r src/images dist"
   },
   "repository": {
     "type": "git",
