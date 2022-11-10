@@ -8,4 +8,4 @@ eleventyNavigation:
   order: 5
 ---
 
-This part is not finished yet
+This has not been written yet

@@ -4,6 +4,7 @@ layout: "base.njk"
 eleventyNavigation:
   key: Account
   title: Account
+  order: 1
 ---
 
 ## User dashboard

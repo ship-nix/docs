@@ -4,6 +4,7 @@ layout: "base.njk"
 eleventyNavigation:
   key: GetStarted
   title: Introduction
+  order: 1
 ---
 
 **ship-nix** is a service for provisioning and deploying **NixOS** servers from a web interface.

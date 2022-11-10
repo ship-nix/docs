@@ -4,6 +4,7 @@ layout: "base.njk"
 eleventyNavigation:
   key: Servers
   title: Servers
+  order: 3
 ---
 
 ship-nix is a web-based interface for creating working servers for you to manage as you like.
