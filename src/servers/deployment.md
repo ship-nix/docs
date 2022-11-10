@@ -35,35 +35,3 @@ You generally don't need to overthink this option too much. If you are able to d
 Some configurations are impure, meaning for example that they require you connect to the internet.
 
 For example IHP needs impure mode because of how their nix config is currently written.
-
-## Speed up deployments
-
-If you have very slow deployments on a consistent level, there can be many factors.
-
-### Binary cache
-
-Any NixOS machine can act as a binary cache.
-
-A binary cache can speed up deploys by sharing binaries between NixOS machines.
-
-If you have a staging server, you can also use it as a binary cache for your production server.
-
-- [Read about binary cache on NixOS Wiki](https://NixOS.wiki/wiki/Binary_Cache)
-
-### nix-copy-closure
-
-You can also prebuild a project on your local machine, and then send the store builds to your server with <a target="_blank" href="https://NixOS.org/manual/nix/stable/command-ref/nix-copy-closure.html">nix-copy-closure</a>.
-
-First build in a project with `nix build`.
-
-Then run nix-copy-closure to send the binaries to your server.
-
-```bash
-nix-copy-closure --to ship@yourserver.com result
-```
-
-This technique can be very useful for Haskell servers because you can compile on you local more powerful machine and save on resources in production.
-
-### Resize server
-
-If none of the above technique does not work for you, the server runs out on memory and uses swap a lot, it could be time to resize your server. This will result in a couple of minutes of downtime.

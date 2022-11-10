@@ -23,23 +23,7 @@
           show_node_modules = false;
         in
         {
-          defaultPackage = pkgs.stdenv.mkDerivation
-            (
-              {
-                name = "documentation-build";
-                buildInputs = [ pkgs.esbuild pkgs.nodejs ];
-                src = ./.;
-                installPhase = ''
-                  export NODE_ENV=production
-                  export NODE_PATH=${nodeDependencies}/node_modules
-                  export npm_config_cache=${nodeDependencies}/config-cache
-                  mkdir $out
-                  ${nodeDependencies}/node_modules/@11ty/eleventy/cmd.js --output $out
-                  $src/bin/tailwindcss-linux-x64 -i $src/src/index.css -o $out/app.css --minify
-                  ${pkgs.esbuild}/bin/esbuild $src/src/index.js --bundle --outfile=$out/app.js
-                '';
-              }
-            );
+          defaultPackage = (pkgs.callPackage ./default.nix { });
           devShell = pkgs.mkShell
             (
               {
