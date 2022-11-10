@@ -11,6 +11,7 @@
       (
         system:
         let
+          projectName = "ship-nix-docs";
           pkgs = nixpkgs.legacyPackages.${system};
           buildPackage = pkgs.callPackage nix-npm-buildpackage { };
           nodeDependencies = buildPackage.mkNodeModules {
@@ -25,7 +26,7 @@
         {
           defaultPackage = pkgs.stdenv.mkDerivation
             {
-              name = "documentation-build";
+              name = projectName + "-build";
               buildInputs = [ pkgs.esbuild pkgs.nodejs ];
               src = ./.;
               installPhase = ''
@@ -41,7 +42,7 @@
           devShell = pkgs.mkShell
             (
               {
-                name = "documentation-shell";
+                name = projectName + "-shell";
                 buildPhase = "";
                 buildInputs = [ pkgs.esbuild pkgs.nodejs ];
                 src = ./.;
