@@ -53,7 +53,7 @@ A `configuration.nix` can for example look like this:
 
 ```
 
-The `imports` declaration imports other `.nix` file that together add up to a complete NixOS declaconfigurationration.
+The `imports` declaration imports other `.nix` file that together add up to a complete NixOS declaration.
 
 `site.nix` for example typically contains configuration for a web site.
 

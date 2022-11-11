@@ -8,4 +8,8 @@ eleventyNavigation:
   order: 8
 ---
 
-This has not been written yet
+If you wish to delete your server, this can be done from the ship-nix dashboard under **Settings**.
+
+## Eject
+
+Ejecting your server means simply that data about your server is erased from ship-nix. Your server will still exist.
