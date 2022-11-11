@@ -21,7 +21,7 @@
           };
           # If you want the node_modules folder to be visible as a symlink for debugging
           # It should generally be off when installing packages as it can confuse npm
-          show_node_modules = false;
+          show_node_modules = true;
         in
         {
           defaultPackage = pkgs.stdenv.mkDerivation

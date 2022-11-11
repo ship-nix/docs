@@ -8,4 +8,12 @@ eleventyNavigation:
   order: 6
 ---
 
-This has not been written yet
+Apart from the ship-nix dashboard, SSH access will be the other way to access your server.
+
+## Connect to your server
+
+## Add SSH keys on DigitalOcean
+
+## Give and revoke SSH access to server
+
+## Troubleshooting
