@@ -2,13 +2,15 @@
 title: Nix and NixOS
 layout: "base.njk"
 eleventyNavigation:
-  key: InstallNix
+  key: Nix
   title: Nix and NixOS
-  parent: Nix
+  parent: GetStarted
   order: 3
 ---
 
-## What is Nix?
+The package manager, language and operating system.
+
+## Nix
 
 Nix is a **package manager**. You can run it on Mac, Windows (WSL2) and you can install it on almost any Linux distro.
 
@@ -18,11 +20,13 @@ Nix is also a declarative **expression language** that you can use to manage and
 
 - [Nix language reference](https://nixos.org/manual/nix/stable/language/index.html)
 
-NixOS is a Linux distribution.
+## NixOs
 
-It's built on the Nix package manager and configure by the declarative Nix expression language.
+NixOs is the Linux distribution that ship-nix uses on all servers.
 
-It's radically different from other Linux distros, focusing on declarative configuration, reproducability and reliability.
+<blockquote><p>NixOS is a Linux distribution built on top of the Nix package manager. It uses declarative configuration and allows reliable system upgrades.</p>
+<a target="_blank" href="https://en.wikipedia.org/wiki/NixOS">NixOS on Wikipedia</a>
+</blockquote>
 
 One benefit of NixOS is that you can manage you entire system configuration inside a git repo. Make your changes, push to git remote and rebuild the configuration.
 
