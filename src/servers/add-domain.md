@@ -31,7 +31,6 @@ Look for `services.nginx.virtualHosts` in your NixOS configuration and replace `
 ```diff-nix
 # ...
   services.nginx.virtualHosts = {
-    # you can switch out "localhost" with a custom domain name
 -   "localhost" = {
 +   "yourdomain.com" = {
       serverAliases = [];
@@ -56,7 +55,6 @@ You can also add more A records and add them to `serverAliases` options.
 ```diff-nix
 # ...
   services.nginx.virtualHosts = {
-    # you can switch out "localhost" with a custom domain name
     "yourdomain.com" = {
 -     serverAliases = [  ];
 +     serverAliases = [ "www.yourdomain.com" "sub.anotherdomain.com" "exampledomain.com" ];

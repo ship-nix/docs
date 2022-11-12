@@ -2,6 +2,9 @@
 
 @tailwind base;
 
+:root {
+  --deleted-line-color: rgb(156, 100, 100);
+}
 
 /* TODO: Left column invisible on small screens */
 .base-layout {
@@ -79,6 +82,20 @@
     padding-bottom: 0.5rem;
 }
 
+.deleted-sign.deleted {
+  color : var(--deleted-line-color);
+}
+
+
+.deleted-sign.deleted * {
+  color : var(--deleted-line-color);
+}
+
+.highlight-line-add {
+  position: relative;
+  @apply bg-green-900;
+  filter: contrast(1.2);
+}
 
 @tailwind components;
 @tailwind utilities;
