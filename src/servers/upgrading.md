@@ -30,7 +30,7 @@ And if the deployment was successful, your server has been upgraded 🙂
 
 ## Upgrade NixOS version
 
-If a newer NixOs version has been released, you can go to your `flake.nix` file and find `inputs.nixpkgs.url`.
+If a newer NixOS version has been released, you can go to your `flake.nix` file and find `inputs.nixpkgs.url`.
 
 ```nix
 {
@@ -70,6 +70,6 @@ Commit, push and click the `Deploy` button from your server dashboard.
   On business critical software, test your system upgrade on a <a class="text-blue-700" href="/servers/staging-servers/">staging server</a> before production
 </div>
 
-Your NixOs server should have upgraded to the latest version.
+Your NixOS server should have upgraded to the latest version.
 
 You can [SSH into your server](/servers/ssh/) and type `nixos-version` to verify that the upgrade was successful.

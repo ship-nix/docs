@@ -63,4 +63,4 @@ Aug 10 11:29:48 your-project acme-your-project.com-start[164635]: 2022/08/10 11:
 Aug 10 11:29:48 your-project acme-your-project.com-start[164635]:         error: one or more domains had a problem:
 ```
 
-Your NixOs configuration will fail. If that happens, just re-disable https and try to enable it a bit later.
+Your NixOS configuration will fail. If that happens, just re-disable https and try to enable it a bit later.

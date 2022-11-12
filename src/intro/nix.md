@@ -20,9 +20,9 @@ Nix is also a declarative **expression language** that you can use to manage and
 
 - [Nix language reference](https://nixos.org/manual/nix/stable/language/index.html)
 
-## NixOs
+## NixOS
 
-NixOs is the Linux distribution that ship-nix uses on all servers.
+NixOS is the Linux distribution that ship-nix uses on all servers.
 
 <blockquote><p>NixOS is a Linux distribution built on top of the Nix package manager. It uses declarative configuration and allows reliable system upgrades.</p>
 <a target="_blank" href="https://en.wikipedia.org/wiki/NixOS">NixOS on Wikipedia</a>

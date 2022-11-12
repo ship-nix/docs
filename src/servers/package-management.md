@@ -10,7 +10,7 @@ eleventyNavigation:
 
 Being built on the Nix package manager, NixOS has many entrypoints to the package registry that make it unique compared to most Linux distributions.
 
-- [NixOs package search](https://search.nixos.org/packages)
+- [NixOS package search](https://search.nixos.org/packages)
 - [How Nix works](https://nixos.org/guides/how-nix-works.html)
 - [Nix package manager manual](https://nixos.org/manual/nix/unstable/introduction.html)
 
