@@ -44,20 +44,20 @@ in
 
 ## Deploy IHP in optimized mode
 
-The normal compilation mode for IHP is
+The default ghc compilation flag for IHP is `-01`.
 
 Optimized mode compiles your To deploy IHP in optimized mode, with the `-02` [ghc optimization flag](https://downloads.haskell.org/ghc/latest/docs/users_guide/using-optimisation.html#o-convenient-packages-of-optimisation-flags).
 
 Go to your `default.nix` add the `optimize` option.
 
-```nix
+```diff-nix
     ...
     ];
     otherDeps = p: with p; [
       # Native dependencies, e.g. imagemagick
     ];
     projectPath = ./.;
-    optimized = true;
++   optimized = true;
   };
 in
 haskellEnv

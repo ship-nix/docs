@@ -51,19 +51,19 @@ You can simply clone it and change the hostname (from "my-app" to "my-app-stage"
       ./nixos/configuration.nix
     ];
   };
-  nixosConfigurations."my-app-stage" = nixpkgs.lib.nixosSystem {
-    inherit system;
-    specialArgs = attrs // {
-      environment = "stage";
-    };
-    modules = [
-      # Overlays-module makes "pkgs.unstable" available in configuration.nix
-      ({ config, pkgs, ... }: {
-        nixpkgs.overlays = [ overlay-unstable ];
-      })
-      ./nixos/configuration.nix
-    ];
-  };
++ nixosConfigurations."my-app-stage" = nixpkgs.lib.nixosSystem {
++   inherit system;
++   specialArgs = attrs // {
++     environment = "stage";
++   };
++   modules = [
++     # Overlays-module makes "pkgs.unstable" available in configuration.nix
++     ({ config, pkgs, ... }: {
++       nixpkgs.overlays = [ overlay-unstable ];
++     })
++     ./nixos/configuration.nix
++   ];
++ };
 }
 ```
 
