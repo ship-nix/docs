@@ -46,9 +46,15 @@ in
 
 The default ghc compilation flag for IHP is `-01`.
 
-Optimized mode compiles your To deploy IHP in optimized mode, with the `-02` [ghc optimization flag](https://downloads.haskell.org/ghc/latest/docs/users_guide/using-optimisation.html#o-convenient-packages-of-optimisation-flags).
+According to GHC docs, the `-01` flags means `Generate good-quality code without taking too long about it.` In other words, more than good enough for most usecases, and rebuilds are very quick on ship-nix.
 
-Go to your `default.nix` add the `optimize` option.
+Optimized mode compiles your IHP project in GHC optimization flag `-02`.
+
+`-02` translates to `Apply every non-dangerous optimisation, even if it means significantly longer compile times.`. And it delivers on significantly longer, especially in an IHP project.
+
+- [GHC optimization flags](https://downloads.haskell.org/ghc/latest/docs/users_guide/using-optimisation.html#o-convenient-packages-of-optimisation-flags)
+
+To enable optimized mode, go to your `default.nix` add the `optimize` option.
 
 ```diff-nix
     ...
@@ -63,15 +69,10 @@ in
 haskellEnv
 ```
 
-Then, on your local computer, run
-
-```
-nix-build
-```
-
-Compiling an IHP project in optimized will make sure your compiled code is optimized by GHC.
-
-This mode will take time the first time you run it.
+<div class="not-prose bg-blue-100 rounded-lg py-5 px-6 mb-4 text-base text-blue-700 mb-3" role="alert">
+  <p><strong>Ask yourself:</strong> Will my users notice this optimization?</p>
+  <p class="pt-4"><strong>ship-nix's opinion:</strong> Beware of premature optimization. Only go with optimized mode if you are having performance issues and optimized mode is the best way to solve it.</p>
+</div>
 
 ## Must run in impure mode
 
