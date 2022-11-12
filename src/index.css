@@ -1,13 +1,29 @@
+@import "prism-theme.css";
+
 @tailwind base;
 
+
+/* TODO: Left column invisible on small screens */
 .base-layout {
     display: grid;
-    grid-template-columns: 18rem 1fr 1fr 18rem;
+    grid-template-columns: 18rem 1fr 1fr;
     grid-template-rows: max-content;
     grid-template-areas: 
-        "header header header header"
-        "sidebar main main toc";
+        "header header header"
+        "sidebar main main";
 }
+
+@media  (min-width: 1024px) { 
+    .base-layout {
+        display: grid;
+        grid-template-columns: 18rem 1fr 1fr 18rem;
+        grid-template-rows: max-content;
+        grid-template-areas: 
+            "header header header header"
+            "sidebar main main toc";
+    }
+
+ }
 
 [data-header] {
     grid-area: header;
@@ -19,7 +35,7 @@
 
 [data-sidebar] :not(.active-topic) .active-topic  {
     font-weight: bolder;
-    @apply text-red-600;
+    @apply text-rose-600;
 }
 
 [data-sidebar] > ul > li {
@@ -62,6 +78,7 @@
     display: inline-block;
     padding-bottom: 0.5rem;
 }
+
 
 @tailwind components;
 @tailwind utilities;

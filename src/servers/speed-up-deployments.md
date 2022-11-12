@@ -34,7 +34,7 @@ If you have a staging server, you can use it as a binary cache for your producti
 
 - [Read about binary cache on NixOS Wiki](https://NixOS.wiki/wiki/Binary_Cache)
 
-### nix-copy-closure
+<!-- ### nix-copy-closure
 
 You can prebuild a project on your local machine, and then send store-fresh builds to your server with <a target="_blank" href="https://NixOS.org/manual/nix/stable/command-ref/nix-copy-closure.html">nix-copy-closure</a>.
 
@@ -50,7 +50,7 @@ Then run nix-copy-closure to send the binaries to your server.
 nix-copy-closure --to ship@yourserver.com result
 ```
 
-This technique can for example be useful for Haskell servers because you can pre-compile on you local more powerful machine and save on resources in production.
+This technique can for example be useful for Haskell servers because you can pre-compile on you local more powerful machine and save on resources in production. -->
 
 ### Resize server
 

@@ -5,7 +5,7 @@ eleventyNavigation:
   key: Deployment
   title: Deployment
   parent: Servers
-  order: 1
+  order: 2
 ---
 
 Deployment in ship-nix is fairly simple. Simply click on the `Deploy` button in your server dashboard. It pulls from your git provider and deploys.

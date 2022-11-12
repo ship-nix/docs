@@ -6,7 +6,27 @@ module.exports = {
     process.env.NODE_PATH + "/tw-elements/dist/js/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            code: {
+              color: "var(--tw-prose-code)",
+              backgroundColor: "var(--bs-gray-200)",
+              padding: "2px 6px",
+              borderRadius: "7px",
+              fontWeight: "600",
+            },
+            "code::before": {
+              content: "none",
+            },
+            "code::after": {
+              content: "none",
+            },
+          },
+        },
+      }),
+    },
   },
   plugins: [
     require("@tailwindcss/typography"),

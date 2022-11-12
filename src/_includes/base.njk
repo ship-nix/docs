@@ -31,16 +31,18 @@
 </ul>
         </aside>
         <main data-main class="border-x w-full pt-[100px] px-20 min-h-screen">
-            <article class="prose max-w-[900px] mx-auto prose-red pb-20">
+            <article class="prose prose-rose max-w-[900px] mx-auto prose-red pb-20">
             
             <h1>{{title}}</h1>
+            <div class="lg:hidden text-sm px-4 text-rose-700">{{ content | toc | safe }}</div>                      
+        
             
             {{ content| safe }}
             </article>
         </main>
         
-        <aside id="toc" data-toc class="md:fixed pt-[100px] right-0 max-w-[18rem] w-full">
-            <div class="max-w-[18rem] text-sm px-4 text-red-700">{{ content | toc | safe }}</div>       
+        <aside id="toc" data-toc class="invisible lg:visible md:fixed pt-[100px] right-0 max-w-[18rem] w-full">
+            <div class="max-w-[18rem] text-sm px-4 text-rose-700">{{ content | toc | safe }}</div>
         </aside>
     </div>
     <script src="/app.js"></script>

@@ -5,7 +5,7 @@ eleventyNavigation:
   key: AddDomain
   title: Domain names
   parent: Servers
-  order: 2
+  order: 3
 ---
 
 Pointing to domains is ship-nix is done via the NixOS configuration.
@@ -26,56 +26,14 @@ Otherwise, just for example point an `A` record with the domain or subdomain you
 
 Here is a code snippet that contains `nginx` configuration.
 
-```nix
-{ config, lib, pkgs, ... }:
-let
-  # TODO: Enable SSL/HTTPS when your domain records are hooked up
-  # By enabling SSL, you accept the terms and conditions of LetsEncrypt
-  # ...
-  httpsEnabled = false;
-  jobsEnabled = false;
-in
-{
-  # ...
-  security.acme.defaults.email = "#{userEmail}";
-  security.acme.acceptTerms = httpsEnabled;
+Look for `services.nginx.virtualHosts` in your NixOS configuration and replace `"localhost"` key in this example to your domain like this:
 
-  services.nginx = {
-    enable = true;
-    enableReload = true;
-    recommendedProxySettings = true;
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedTlsSettings = true;
-  };
-  services.nginx.virtualHosts = {
-    # you can switch out "localhost" with a custom domain name
-    "localhost" = {
-      serverAliases = [];
-      enableACME = httpsEnabled;
-      forceSSL = httpsEnabled;
-      locations = {
-        "/" = {
-          proxyPass = "http://localhost:8000";
-          proxyWebsockets = true;
-          extraConfig =
-            "proxy_ssl_server_name on; proxy_pass_header Authorization;"
-          ;
-        };
-      };
-    };
-  };
- # ...
-}
-```
-
-Look for `services.nginx.virtualHosts` and replace they `"localhost"` key in this example to your domain like this:
-
-```nix
+```diff-nix
 # ...
   services.nginx.virtualHosts = {
     # you can switch out "localhost" with a custom domain name
-    "yourdomain.com" = {
+-   "localhost" = {
++   "yourdomain.com" = {
       serverAliases = [];
       enableACME = httpsEnabled;
       forceSSL = httpsEnabled;
@@ -95,12 +53,13 @@ Look for `services.nginx.virtualHosts` and replace they `"localhost"` key in thi
 
 You can also add more A records and add them to `serverAliases` options.
 
-```nix
+```diff-nix
 # ...
   services.nginx.virtualHosts = {
     # you can switch out "localhost" with a custom domain name
     "yourdomain.com" = {
-      serverAliases = [ "www.yourdomain.com" "sub.anotherdomain.com" "exampledomain.com" ];
+-     serverAliases = [  ];
++     serverAliases = [ "www.yourdomain.com" "sub.anotherdomain.com" "exampledomain.com" ];
       enableACME = httpsEnabled;
       forceSSL = httpsEnabled;
       locations = {

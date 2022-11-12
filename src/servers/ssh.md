@@ -5,7 +5,7 @@ eleventyNavigation:
   key: SSH
   title: SSH access
   parent: Servers
-  order: 6
+  order: 5
 ---
 
 Apart from the ship-nix dashboard, SSH access will be the other way to access your server.

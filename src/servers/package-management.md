@@ -5,7 +5,7 @@ eleventyNavigation:
   key: PackageManagement
   title: Package Management
   parent: Servers
-  order: 4
+  order: 6
 ---
 
 Being built on the Nix package manager, NixOS has many entrypoints to the package registry that make it unique compared to most Linux distributions.
@@ -74,35 +74,20 @@ environment.systemPackages = [
 
 ## Enable unfree packages
 
-You should see this in your `flake.nix`:
+You should see this in your :
 
-```nix
-    let
-      system = "x86_64-linux";
-      overlay-unstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-        # use this variant if unfree packages are needed:
-        # unstable = import nixpkgs-unstable {
-        #  inherit system;
-        #  config.allowUnfree = true;
-        # };
-      };
-    in {
-```
+Simply uncomment and comment out the line above which you will find on `flake.nix`:
 
-Simply uncomment and comment out the line above:
-
-```nix
+```diff-nix
 
     let
       system = "x86_64-linux";
       overlay-unstable = final: prev: {
-        # unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-        # use this variant if unfree packages are needed:
-        unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-        # };
-      };
+-       # unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+-       # use this variant if unfree packages are needed:
++        unstable = import nixpkgs-unstable {
++        inherit system;
++       config.allowUnfree = true;
++      };
     in {
 ```
