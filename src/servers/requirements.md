@@ -16,14 +16,14 @@ You can read about making your project ship-nix compatible in the [migration gui
 
 ## Required files and folders
 
-First of all, ship-nix requires a `server-config` folder at the root of your project repository.
+First of all, ship-nix requires a `nixos` folder at the root of your project repository.
 
-The contents of the server-config folder must at minimum have these files.
+A ship-nix compatible projects folder must at minimum have these files:
 
 ```
 .
 ├── flake.nix
-└── server-config/
+└── nixos/
     ├── authorized_keys
     ├── configuration.nix
     ├── scripts/

@@ -112,7 +112,7 @@ haskellEnv
 
 <div class="not-prose bg-blue-100 rounded-lg py-5 px-6 mb-4 text-base text-blue-700 mb-3" role="alert">
   <p><strong>Ask yourself:</strong> Will my users notice this optimization?</p>
-  <p class="pt-4"><strong>ship-nix's opinion:</strong> Beware of premature optimization. Only go with optimized mode if you are having performance issues and optimized mode is the best way to solve it.</p>
+  <p class="pt-4"><strong>ship-nix's opinion:</strong> Beware of premature optimization.</p>
 </div>
 
 ## Must run in impure mode

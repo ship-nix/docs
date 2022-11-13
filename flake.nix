@@ -53,8 +53,6 @@
                   echo convert -verbose -resize 1400x1200\> -quality 80 "'$file'" \
                   +profile "'*'" "'$out/images/$outfile'"
                 done | gm batch -echo on -feedback on -
-
-                
               '';
             };
           devShell = pkgs.mkShell
