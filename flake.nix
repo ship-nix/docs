@@ -44,13 +44,13 @@
                 for file in $src/src/images/*.jpg
                 do
                   outfile=`basename $file .jpg`.webp
-                  echo convert -verbose -resize 1400x800\> -quality 80 "'$file'" \
+                  echo convert -verbose -resize 1400x1200\> -quality 80 "'$file'" \
                   +profile "'*'" "'$out/images/$outfile'"
                 done | gm batch -echo on -feedback on - && \
                 for file in $src/src/images/*.png
                 do
                   outfile=`basename $file .png`.webp
-                  echo convert -verbose -resize 1400x800\> -quality 80 "'$file'" \
+                  echo convert -verbose -resize 1400x1200\> -quality 80 "'$file'" \
                   +profile "'*'" "'$out/images/$outfile'"
                 done | gm batch -echo on -feedback on -
 
@@ -78,13 +78,13 @@
                       for file in src/images/*.jpg
                       do
                         outfile=`basename $file .jpg`.webp
-                        echo convert -verbose -resize 1400x800\> -quality 80 "'$file'" \
+                        echo convert -verbose -resize 1400x1200\> -quality 80 "'$file'" \
                         +profile "'*'" "'dist/images/$outfile'"
                       done | gm batch -echo on -feedback on - && \
                       for file in src/images/*.png
                       do
                         outfile=`basename $file .png`.webp
-                        echo convert -verbose -resize 1400x800\> -quality 80 "'$file'" \
+                        echo convert -verbose -resize 1400x1200\> -quality 80 "'$file'" \
                         +profile "'*'" "'dist/images/$outfile'"
                       done | gm batch -echo on -feedback on -
                     '';
