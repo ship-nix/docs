@@ -16,10 +16,8 @@ Depending on the complexity of your project, you might or might not use SSH much
 
 As you transition into the world of self-managed NixOS servers with secrets and databases with customer data, you need to prioritize SSH key security.
 
-<div class="not-prose bg-blue-100 rounded-lg py-5 px-6 mb-4 text-base text-blue-700 mb-3 space-y-4" role="alert">
+<div class="not-prose bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3 space-y-4" role="alert">
   <p>The most important message on this page is: <strong>SECURE YOUR SSH KEYS</strong>. And make it mandatory for every system admin of your servers.</p>
-
-<p><strong>Why?</strong> If an attacker get access to your laptop and your SSH keys are passwordless, they can access your source code, your customer data and secrets within seconds.</p>
 
 </div>
 
