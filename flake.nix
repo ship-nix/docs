@@ -27,9 +27,10 @@
           defaultPackage = pkgs.stdenv.mkDerivation
             {
               name = projectName + "-build";
-              buildInputs = [ pkgs.esbuild pkgs.nodejs ];
+              buildInputs = [ pkgs.esbuild pkgs.nodejs pkgs.graphicsmagick ];
               src = ./.;
               installPhase = ''
+                set -xe
                 export NODE_ENV=production
                 export NODE_PATH=${nodeDependencies}/node_modules
                 export npm_config_cache=${nodeDependencies}/config-cache
@@ -37,7 +38,23 @@
                 ${nodeDependencies}/node_modules/@11ty/eleventy/cmd.js --output $out
                 $src/bin/tailwindcss-linux-x64 -i $src/src/index.css -o $out/app.css --minify
                 ${pkgs.esbuild}/bin/esbuild $src/src/index.js --bundle --outfile=$out/app.js
-                cp -r src/images/. $out/images
+                mkdir -p $out/images
+                cp $src/src/images/*.svg $out/images/
+  
+                for file in $src/src/images/*.jpg
+                do
+                  outfile=`basename $file .jpg`.webp
+                  echo convert -verbose -resize 1400x800\> -quality 80 "'$file'" \
+                  +profile "'*'" "'$out/images/$outfile'"
+                done | gm batch -echo on -feedback on - && \
+                for file in $src/src/images/*.png
+                do
+                  outfile=`basename $file .png`.webp
+                  echo convert -verbose -resize 1400x800\> -quality 80 "'$file'" \
+                  +profile "'*'" "'$out/images/$outfile'"
+                done | gm batch -echo on -feedback on -
+
+                
               '';
             };
           devShell = pkgs.mkShell
@@ -45,7 +62,7 @@
               {
                 name = projectName + "-shell";
                 buildPhase = "";
-                buildInputs = [ pkgs.esbuild pkgs.nodejs ];
+                buildInputs = [ pkgs.esbuild pkgs.nodejs pkgs.graphicsmagick ];
                 src = ./.;
                 shellHook = '' 
                       export NODE_ENV=development
@@ -55,6 +72,21 @@
                       export npm_config_cache=~/.npm
                       echo "Welcome to your nix development shell"
                       echo "Run 'npm run start' to run dev server"
+                      mkdir -p dist/images
+                      cp src/images/*.svg dist/images/
+  
+                      for file in src/images/*.jpg
+                      do
+                        outfile=`basename $file .jpg`.webp
+                        echo convert -verbose -resize 1400x800\> -quality 80 "'$file'" \
+                        +profile "'*'" "'dist/images/$outfile'"
+                      done | gm batch -echo on -feedback on - && \
+                      for file in src/images/*.png
+                      do
+                        outfile=`basename $file .png`.webp
+                        echo convert -verbose -resize 1400x800\> -quality 80 "'$file'" \
+                        +profile "'*'" "'dist/images/$outfile'"
+                      done | gm batch -echo on -feedback on -
                     '';
               }
             );

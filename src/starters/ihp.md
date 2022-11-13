@@ -121,4 +121,4 @@ IHP is packaged with Nix, but have not yet been updated to work with Nix flakes 
 
 IHP servers must be run with the `--impure` flag, meaning this switch must be turned on like this in the IHP dashboard.
 
-<img class="border" src="/images/impure-switch.jpg" />
+<img class="border" src="/images/impure-switch.webp" />

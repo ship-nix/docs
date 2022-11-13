@@ -3,7 +3,7 @@
 @tailwind base;
 
 :root {
-  --deleted-line-color: rgb(156, 100, 100);
+  --deleted-line-color: #848381;
 }
 
 /* TODO: Left column invisible on small screens */
@@ -84,6 +84,7 @@
 
 .deleted-sign.deleted {
   color : var(--deleted-line-color);
+  text-decoration: line-through;
 }
 
 

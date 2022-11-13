@@ -16,7 +16,7 @@ You can add an A record to the `public IP` on your server.
 
 If you manage your domain via DigitalOcean, you can automatically find your droplet.
 
-<a target="_blank" href="/images/digitalocean-domain-record.jpg"><img src="/images/digitalocean-domain-record.jpg" /></a>
+<a target="_blank" href="/images/digitalocean-domain-record.webp"><img src="/images/digitalocean-domain-record.webp" /></a>
 
 Otherwise, just for example point an `A` record with the domain or subdomain you want to the public IP found on your server dashboard.
 
@@ -86,4 +86,4 @@ After making the changes in `configuration.nix`, push and deploy.
 
 After your domain has propagated, you should also add https with `LetsEncrypt`.
 
-- [Read more in the https/SSL section](/servers/https/)
+- [Read more in the https/LetsEncrypt section](/servers/https/)

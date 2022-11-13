@@ -10,6 +10,16 @@ eleventyNavigation:
 
 A binary cache is a collection of prebuilt binaries that can speed up server build.
 
+## Binary cache
+
+Any NixOS machine can act as a binary cache.
+
+A binary cache can speed up deploys by sharing binaries between NixOS machines.
+
+If you have a staging server, you can use it as a binary cache for your production server.
+
+- [Read about binary cache on NixOS Wiki](https://NixOS.wiki/wiki/Binary_Cache)
+
 ## Use staging server as a binary cache
 
 If you have a staging server, it's not only useful for testing before pushing to production.
@@ -23,16 +33,6 @@ This is beneficial since it will require minimal RAM and CPU to rebuild in produ
 ## Managed binary caches
 
 If you want to host your binary caches through an external service, <a target="_blank" href="https://www.cachix.org/">Cachix</a> offers "binary cache as a service".
-
-### Binary cache
-
-Any NixOS machine can act as a binary cache.
-
-A binary cache can speed up deploys by sharing binaries between NixOS machines.
-
-If you have a staging server, you can use it as a binary cache for your production server.
-
-- [Read about binary cache on NixOS Wiki](https://NixOS.wiki/wiki/Binary_Cache)
 
 <!-- ### nix-copy-closure
 

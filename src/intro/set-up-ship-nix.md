@@ -18,7 +18,7 @@ As you see from the permissions we ask for when logging in, ship-nix can create 
 
 Repository deletion is not possible. All repo deletion needs to be done manually by yourself.
 
-<a href="/images/githublogin.png"><img src="/images/githublogin.png" /></a>
+<a href="/images/githublogin.webp"><img src="/images/githublogin.webp" /></a>
 
 ## Add server provider credentials
 
@@ -28,18 +28,18 @@ Log in or register at [digitalocean.com](https://www.digitalocean.com/).
 
 Then, navigate to `API` and click `Generate New Token`
 
-<a href="/images/digitalocean-api.png"><img src="/images/digitalocean-api.png" /></a>
+<a href="/images/digitalocean-api.webp"><img src="/images/digitalocean-api.webp" /></a>
 
 Give your token a name and make sure it has **both read and write** permissions.
 
-<a href="/images/digitalocean-access-token.png" ><img src="/images/digitalocean-access-token.png" /></a>
+<a href="/images/digitalocean-access-token.webp" ><img src="/images/digitalocean-access-token.webp" /></a>
 
 When successfully generated, your access token will appear. The actual token key will only visible once, so make sure to copy it right away.
 
-<a href="/images/digitalocean-generated-token.png"><img src="/images/digitalocean-generated-token.png" /></a>
+<a href="/images/digitalocean-generated-token.webp"><img src="/images/digitalocean-generated-token.webp" /></a>
 
 Now, inside ship-nix, select `Access Control` and insert the access token you copied from DigitalOcean.
 
 `Token name` can be anything, but it can be convenient to name it the same as you did in DigitalOcean to better remember it.
 
-<a href="/images/ship-nix-access-control.png"><img src="/images/ship-nix-access-control.png" /></a>
+<a href="/images/ship-nix-access-control.webp"><img src="/images/ship-nix-access-control.webp" /></a>

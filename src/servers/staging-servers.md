@@ -44,7 +44,6 @@ You can simply clone it and change the hostname (from "my-app" to "my-app-stage"
       environment = "production";
     };
     modules = [
-      # Overlays-module makes "pkgs.unstable" available in configuration.nix
       ({ config, pkgs, ... }: {
         nixpkgs.overlays = [ overlay-unstable ];
       })
@@ -57,7 +56,6 @@ You can simply clone it and change the hostname (from "my-app" to "my-app-stage"
 +     environment = "stage";
 +   };
 +   modules = [
-+     # Overlays-module makes "pkgs.unstable" available in configuration.nix
 +     ({ config, pkgs, ... }: {
 +       nixpkgs.overlays = [ overlay-unstable ];
 +     })
