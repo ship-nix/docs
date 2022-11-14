@@ -18,7 +18,7 @@ module.exports = (eleventyConfig) => {
       typographer: true,
       breaks: true,
       linkify: true,
-    }).use(markdownItAnchor, {})
+    }).use(markdownItAnchor, { headingTag: "h1" })
   );
   return {
     dir: {

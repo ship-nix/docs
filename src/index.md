@@ -7,16 +7,16 @@ eleventyNavigation:
   order: 1
 ---
 
-**ship-nix** is a web UI for provisioning, managing and deploying **NixOS** servers.
+**ship-nix** is a web UI for **NixOS** servers.
 
-You can use ship-nix to initiate a starter project with good defaults and host it on DigitalOcean.
+It simplifies provisioning, self-managing and deploying NixOS servers.
 
-You can select from a several "one-click" starter projects like IHP and barebones or get inspired by some of the guides in the [NixOS manual](https://NixOS.org/manual/NixOS/stable/) 🤩
+You can use ship-nix to create a server with good defaults and host it on DigitalOcean.
 
-## Other important documentation
+## Official NixOS documentation
 
-- [NixOS options search](https://search.NixOS.org/options?)
-
-- If you are looking for documentation on **configuration options**, do a search on [NixOS options search](https://search.NixOS.org/options?)
-- If you need to know what packages are available, do a search on [NixOS packages search](https://search.NixOS.org/packages?)
-- If you're stuck on something advanced Nix related, please refer to the [https://NixOS.org/](https://NixOS.org/) website, where there is lots of documentation, and an active and friendly community.
+- [NixOS packages search](https://search.NixOS.org/packages?): Search for packages in the Nix package manager
+- [NixOS options search](https://search.NixOS.org/options?): Search for NixOS configuration options
+- [Nix flakes (NixOS wiki)](https://nixos.wiki/wiki/Flakes): Documentation useful for understanding flakes
+- [nix.dev](https://nix.dev/): An unofficial supplement to NixOS documentation
+- [nixos.org](https://NixOS.org/): NixOS official website

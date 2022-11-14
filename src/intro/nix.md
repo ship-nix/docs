@@ -12,11 +12,11 @@ The package manager, language and operating system.
 
 ## Nix
 
-Nix is a **package manager**. You can run it on Mac, Windows (WSL2) and you can install it on almost any Linux distro.
+Nix is a **package manager**. It works on Mac, Windows (WSL2) and pretty much any Linux distro.
 
 - [Nix package manual](https://NixOS.org/manual/nix/stable/)
 
-Nix is also a declarative **expression language** that you can use to manage and configure web servers and desktop computers among other things.
+Nix is also a declarative **expression language**. You can use it to manage and configure web servers among other things.
 
 - [Nix language reference](https://nixos.org/manual/nix/stable/language/index.html)
 
@@ -30,6 +30,4 @@ NixOS is the Linux distribution that ship-nix uses on all servers.
 
 One benefit of NixOS is that you can manage you entire system configuration inside a git repo. Make your changes, push to git remote and rebuild the configuration.
 
-- [NixOS manual](https://NixOS.org/manual/NixOS/stable/).
-
-ship-nix can bootstrap Nix servers for you in various, and deploy them as the first thing you do when starting a project.
+- [NixOS manual](https://NixOS.org/manual/NixOS/stable/)

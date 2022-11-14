@@ -1,22 +1,16 @@
 ---
-title: Set up locally
+title: Install essentials
 layout: "base.njk"
 eleventyNavigation:
   key: InstallNix
-  title: Set up locally
+  title: Install essentials
   parent: GetStarted
   order: 2
 ---
 
-To be able to develop locally, you need to have Nix installed and flakes enabled.
-
-It's also highly recommended to install direnv for the best developer experience.
-
 ## Install Nix
 
 [Follow the instructions on NixOS.org](https://NixOS.org/download.html#download-nix) to install Nix on your machine.
-
-If you are already running NixOS on your desktop, you're of course all good 😊
 
 ## Enable flakes
 

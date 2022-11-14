@@ -30,7 +30,6 @@ After provisioning the server, do the following:
     { self
     , nixpkgs
     , nixpkgs-unstable
-    , docs
     } @attrs:
     let
       ...
