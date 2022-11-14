@@ -12,55 +12,14 @@ IHP is a batteries-included full-stack web framework written in Haskell.
 
 The IHP starter comes with a fresh IHP project and a self-hosted PostgreSQL server already plugged in.
 
-## Switch to a managed database
-
-You can switch to a managed or other external database if you don't wish to host the database on your server.
-
-Just go to the `Environment` tab in your server dashboard and change the `DATABASE_URL` key.
-
-```diff-bash
-- DATABASE_URL=postgres://shipadmin:[password]@0.0.0.0:5432/defaultdb
-+ DATABASE_URL=postgresql://doadmin:[password]@[...]forexampledigitalocean.com:25060/defaultdb?sslmode=require
-```
-
-[SSH](/servers/ssh) into your server and run the `before-rebuild` script:
-
-```bash
-~/server/nixos/scripts/before-rebuild
-```
-
-Then go to your server dashboard on "ship-nix" and click `Deploy`.
-
-You can delete your self-hosted postgresql database if you wish. It will be completely gone after your next garbage-collection.
-
-```diff-nix
--  services.postgresql = {
--    enable = true;
--    package = pkgs.postgresql;
--    ensureDatabases = [ "defaultdb" ];
--    ensureUsers = [
--      {
--        name = "shipadmin";
--        ensurePermissions = {
--          "DATABASE defaultdb" = "ALL PRIVILEGES";
--        };
--      }
--    ];
--    enableTCPIP = true;
--    authentication = ''
--      host    all             all             0.0.0.0/0            md5
--    '';
--  };
-```
-
 ## Add a domain and https
 
 As soon as you create a new IHP server, it will only be available through your public IP address.
 
 **Follow these guides to add a domain name and https**
 
-- [See the domain name section](/servers/add-domain)
-- [See the https section](/servers/https)
+- [Add a domain name](/servers/add-domain)
+- [Add SSL with LetsEncrypt](/servers/https)
 
 In addition, you would have to go to the **Environment** tab in your server dashboard and set the primary domain name in the environment variables.
 
@@ -122,3 +81,44 @@ IHP is packaged with Nix, but have not yet been updated to work with Nix flakes 
 IHP servers must be run with the `--impure` flag, meaning this switch must be turned on like this in the IHP dashboard.
 
 <img class="border" src="/images/impure-switch.webp" />
+
+## Switch to a managed/external database
+
+You can switch to a managed or other external database if you don't wish to host the database on your server.
+
+Just go to the `Environment` tab in your server dashboard and change the `DATABASE_URL` key.
+
+```diff-bash
+- DATABASE_URL=postgres://shipadmin:[password]@0.0.0.0:5432/defaultdb
++ DATABASE_URL=postgresql://doadmin:[password]@[...]forexampledigitalocean.com:25060/defaultdb?sslmode=require
+```
+
+[SSH](/servers/ssh) into your server and run the `before-rebuild` script:
+
+```bash
+~/server/nixos/scripts/before-rebuild
+```
+
+Then go to your server dashboard on "ship-nix" and click `Deploy`.
+
+You can delete your self-hosted postgresql database if you wish. It will be completely gone after your next garbage-collection.
+
+```diff-nix
+-  services.postgresql = {
+-    enable = true;
+-    package = pkgs.postgresql;
+-    ensureDatabases = [ "defaultdb" ];
+-    ensureUsers = [
+-      {
+-        name = "shipadmin";
+-        ensurePermissions = {
+-          "DATABASE defaultdb" = "ALL PRIVILEGES";
+-        };
+-      }
+-    ];
+-    enableTCPIP = true;
+-    authentication = ''
+-      host    all             all             0.0.0.0/0            md5
+-    '';
+-  };
+```
