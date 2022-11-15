@@ -43,18 +43,18 @@ Github has a simple guide on [working with SSH key passphrases](https://docs.git
 
 You can generate SSH keys directly on a hardware security key like Yubikey, giving you physical SSH keys.
 
-ship-nix will also eventually support [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn) hardware key support on the web dashboard.
+{{site.name}} will also eventually support [WebAuthn](https://en.wikipedia.org/wiki/WebAuthn) hardware key support on the web dashboard.
 
 There are several alternatives if you want to use SSH keys on a hardware key.
 
-- [yubikey-agent (currently used by ship-nix)](https://nixos.wiki/wiki/Yubikey)
+- [yubikey-agent (currently used by {{site.name}} creators)](https://nixos.wiki/wiki/Yubikey)
 - [xeiaso.net: How to Store an SSH Key on a Yubikey (you just need OpenSSH 8.2+)](https://xeiaso.net/blog/yubikey-ssh-key-storage)
 - [NixOS wiki has an article about Yubikey](https://nixos.wiki/wiki/Yubikey)
 
 #### Pros
 
 - Bring your physical SSH key to any computer
-- Enhances security on many services (soon ship-nix too)
+- Enhances security on many services (soon {{appName}} too)
 
 #### Cons
 
@@ -77,7 +77,7 @@ ssh ship@yourdomain.com
 
 ## Add SSH keys on DigitalOcean
 
-Uploading your SSH keys on DigitalOcean is a time-saver because you can select to add them to the server when you create a new server from ship-nix.
+Uploading your SSH keys on DigitalOcean is a time-saver because you can select to add them to the server when you create a new server from {{appName}}.
 
 <img src="/images/do-ssh-keys.webp" />
 

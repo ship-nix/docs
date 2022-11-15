@@ -7,7 +7,7 @@ eleventyNavigation:
   order: 3
 ---
 
-There are some conventions for your project code to work with ship-nix.
+There are some conventions for your project code to work with {{site.name}}.
 
 Use the [Load existing code starter](/starters/migration/) to generate this code for you instead of building it manually.
 
@@ -15,15 +15,15 @@ Use the [Load existing code starter](/starters/migration/) to generate this code
 
 Your current state of the source code lives in the `/home/ship/server` folder.
 
-You can modify it and tinker with configurations via SSH, but a ship-nix deployment will remove these changes.
+You can modify it and tinker with configurations via SSH, but a {{site.name}} deployment will remove these changes.
 
 Your secrets and other more sensitive environment data lives in `/etc/ship-nix`, for example the `.env` file defines the global environment variables.
 
 ## In source code
 
-First of all, ship-nix requires a `nixos` folder at the root of your project repository.
+First of all, {{site.name}} requires a `nixos` folder at the root of your project repository.
 
-A ship-nix compatible projects folder must at minimum have these files:
+A {{site.name}} compatible projects folder must at minimum have these files:
 
 ```
 .
@@ -60,7 +60,7 @@ This is the entrypoint for the NixOS system itself
 
 ### flake.nix
 
-ship-nix is built on flakes because we believe it's the upcoming way to use Nix.
+{{site.name}} is built on flakes because we believe it's the upcoming way to use Nix.
 
 Here is a good definition of what it is:
 
@@ -68,13 +68,13 @@ Here is a good definition of what it is:
 >
 > > From [An introduction to Nix Flakes](https://www.tweag.io/blog/2020-05-25-flakes/) (tweag.io)
 
-With a flake, you can declare your whole Nix configuration in your project repo and easily build it on your ship-nix server.
+With a flake, you can declare your whole Nix configuration in your project repo and easily build it on your {{site.name}} server.
 
 - [Read about Nix flakes on NixOS wiki](https://NixOS.wiki/wiki/Flakes)
 
 ### scripts/
 
-Your ship-nix configuration must contain an executable **after-rebuild, before-rebuild and provision**.
+Your {{site.name}} configuration must contain an executable **after-rebuild, before-rebuild and provision**.
 
 These files can be empty and do nothing, but they must be executable.
 
@@ -94,17 +94,17 @@ An executable script that with all the necessary actions for provisioning your p
 
 ### ship.nix
 
-This file contains configurations that are important for ship-nix to work.
+This file contains configurations that are important for {{site.name}} to work.
 
 We have decided to not ship this as a library, but rather just add it to your configuration.
 
 You can make changes if needed.
 
-Be mindful that disabling what's already defined here could cause problems in interaction with ship-nix.
+Be mindful that disabling what's already defined here could cause problems in interaction with {{site.name}}.
 
 ```nix
-# ship-nix mandatory settings
-# IMPORTANT: These settings are essential for ship-nix to function properly on your server
+# {{site.name}} mandatory settings
+# IMPORTANT: These settings are essential for {{site.name}} to function properly on your server
 # Modify with care
 
 { config, pkgs, modulesPath, lib, ... }:
@@ -120,7 +120,7 @@ Be mindful that disabling what's already defined here could cause problems in in
 
   services.openssh = {
     enable = true;
-    # ship-nix uses SSH keys to gain access to the server
+    # {{site.name}} uses SSH keys to gain access to the server
     # Manage permitted public keys in the `authorized_keys` file
     passwordAuthentication = false;
     #  permitRootLogin = "no";

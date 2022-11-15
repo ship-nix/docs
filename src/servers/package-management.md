@@ -63,7 +63,7 @@ environment.systemPackages = [
 
 ## Use unstable packages
 
-All ship-nix starters has the ability to also use unstable packages by using the `unstable`-prefix.
+All {{site.name}} starters has the ability to also use unstable packages by using the `unstable`-prefix.
 
 ```nix
 environment.systemPackages = [

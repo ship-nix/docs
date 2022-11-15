@@ -16,7 +16,7 @@ This is easy to fix declaratively via your NixOs configuration.
 
 Find your Nginx declaration (usually on `site.nix`).
 
-If you use one of the starters that come with ship-nix, you will find the variable `httpsEnabled` at the top.
+If you use one of the starters that come with {{site.name}}, you will find the variable `httpsEnabled` at the top.
 
 Change this to `true`, commit, push and click the `Deploy` button on your server dashboard.
 

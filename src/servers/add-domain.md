@@ -8,7 +8,7 @@ eleventyNavigation:
   order: 3
 ---
 
-Pointing to domains is ship-nix is done via the NixOS configuration.
+Pointing to domains is {{site.name}} is done via the NixOS configuration.
 
 ## First, point the domain to the server.
 

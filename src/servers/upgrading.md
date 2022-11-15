@@ -10,7 +10,7 @@ eleventyNavigation:
 
 Keeping your system updated is vital for server management.
 
-In ship-nix, you can do this with a lot of peace of mind. Especially if you test it on a [staging server first](/servers/staging-servers/) 👈
+In {{site.name}}, you can do this with a lot of peace of mind. Especially if you test it on a [staging server first](/servers/staging-servers/) 👈
 
 ## Update packages
 
@@ -20,7 +20,7 @@ On your local machine, at the root of your repository, run
 nix flake update
 ```
 
-If this went without without error, you can commit, push and click the `Deploy` button on your ship-nix dashboard.
+If this went without without error, you can commit, push and click the `Deploy` button on your {{site.name}} dashboard.
 
 And if the deployment was successful, your server has been upgraded 🙂
 

@@ -46,7 +46,7 @@ in
 
 The default ghc compilation flag for IHP is `-01`.
 
-According to GHC docs, the `-01` flags means `Generate good-quality code without taking too long about it.` In other words, more than good enough for most usecases, and rebuilds are very quick on ship-nix.
+According to GHC docs, the `-01` flags means `Generate good-quality code without taking too long about it.` In other words, more than good enough for most usecases, and rebuilds are very quick on {{site.name}}.
 
 Optimized mode compiles your IHP project in GHC optimization flag `-02`.
 
@@ -71,7 +71,7 @@ haskellEnv
 
 <div class="not-prose bg-blue-100 rounded-lg py-5 px-6 mb-4 text-base text-blue-700 mb-3" role="alert">
   <p><strong>Ask yourself:</strong> Will my users notice this optimization?</p>
-  <p class="pt-4"><strong>ship-nix's opinion:</strong> Beware of premature optimization.</p>
+  <p class="pt-4"><strong>{{site.name}}'s opinion:</strong> Beware of premature optimization.</p>
 </div>
 
 ## Must run in impure mode
@@ -99,7 +99,7 @@ Just go to the `Environment` tab in your server dashboard and change the `DATABA
 ~/server/nixos/scripts/before-rebuild
 ```
 
-Then go to your server dashboard on "ship-nix" and click `Deploy`.
+Then go to your server dashboard on {{site.name}} and click `Deploy`.
 
 You can delete your self-hosted postgresql database if you wish. It will be completely gone after your next garbage-collection.
 

@@ -7,7 +7,7 @@ eleventyNavigation:
   order: 4
 ---
 
-On ship-nix, server starters are templates that ships with code and a working server.
+On {{site.name}}, server starters are templates that ships with code and a working server.
 
 ## All starters
 

@@ -13,7 +13,7 @@ You manage account data and manage github login in in your <a target="_blank" hr
 
 ## Deleting your account
 
-You can delete your user from the dashboard. This also deletes all your data associated with ship-nix. **We can not recover this data.**
+You can delete your user from the dashboard. This also deletes all your data associated with Shipnix. **We can not recover this data.**
 
 Your servers remain intact on your server provider after deleting your account.
 
@@ -21,5 +21,5 @@ Your servers remain intact on your server provider after deleting your account.
 
 Other stuff that gets deleted:
 
-- Your custom NixOS images uploaded by ship-nix
-- Deploy keys that where created via ship-nix if you use the Github integration
+- Your custom NixOS images uploaded by Shipnix
+- Deploy keys that where created via Shipnix if you use the Github integration

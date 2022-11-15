@@ -65,11 +65,11 @@ You can simply clone it and change the hostname (from "my-app" to "my-app-stage"
 }
 ```
 
-## Create the staging server from ship-nix
+## Create the staging server from {{site.name}}
 
 When creating a new server, select the "Migrate" option.
 
-After the server is provisioned, select the server preset that aligns with your running server and choose the `Import a project already compatible with ship-nix`.
+After the server is provisioned, select the server preset that aligns with your running server and choose the `Import a project already compatible with {{site.name}}`.
 
 Follow the instructions to add your repo.
 

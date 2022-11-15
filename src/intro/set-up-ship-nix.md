@@ -8,7 +8,7 @@ eleventyNavigation:
   order: 1
 ---
 
-You can register for ship-nix with email/password or Github login.
+You can register for {{site.name}} with email/password or Github login.
 
 After registration, there are a few initial steps before you can create a server.
 
@@ -16,9 +16,9 @@ After registration, there are a few initial steps before you can create a server
 
 The Github login has a several benefits like quicker login.
 
-It also simplifies connecting with Github, so ship-nix can create new repositories and deploy keys for you.
+It also simplifies connecting with Github, so {{site.name}} can create new repositories and deploy keys for you.
 
-ship-nix **can not delete** repositories.
+{{site.name}} **can not delete** repositories.
 
 <a href="/images/githublogin.webp"><img src="/images/githublogin.webp" /></a>
 
@@ -40,7 +40,7 @@ The actual token key will only visible once, so make sure to copy it right away.
 
 <a href="/images/digitalocean-generated-token.webp"><img src="/images/digitalocean-generated-token.webp" /></a>
 
-Inside ship-nix, select `Access Control`. Insert the access token you copied from DigitalOcean.
+Inside {{site.na,e}}, select `Access Control`. Insert the access token you copied from DigitalOcean.
 
 `Token name` can be anything. It can be convenient to name it the same as you did in DigitalOcean to better remember it.
 

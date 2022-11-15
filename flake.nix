@@ -11,7 +11,7 @@
       (
         system:
         let
-          projectName = "ship-nix-docs";
+          projectName = "shipnix-docs";
           pkgs = nixpkgs.legacyPackages.${system};
           buildPackage = pkgs.callPackage nix-npm-buildpackage { };
           nodeDependencies = buildPackage.mkNodeModules {

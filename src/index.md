@@ -7,11 +7,11 @@ eleventyNavigation:
   order: 1
 ---
 
-**ship-nix** is a web UI for **NixOS** servers.
+**Shipnix** is a web UI for **NixOS** servers.
 
 It simplifies provisioning, self-managing and deploying NixOS servers.
 
-You can use ship-nix to create a server with good defaults and host it on DigitalOcean.
+You can use Shipnix to create a server with good defaults and host it on DigitalOcean.
 
 ## Official NixOS documentation
 
