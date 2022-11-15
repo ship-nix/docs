@@ -16,17 +16,7 @@
         "sidebar main main";
 }
 
-@media  (min-width: 1024px) { 
-    .base-layout {
-        display: grid;
-        grid-template-columns: 18rem 1fr 1fr 18rem;
-        grid-template-rows: max-content;
-        grid-template-areas: 
-            "header header header header"
-            "sidebar main main toc";
-    }
 
- }
 
 [data-header] {
     grid-area: header;
@@ -52,7 +42,7 @@
 
 [data-sidebar] .active-topic li:not(.active-topic) {
     font-weight: normal;
-    color: rgb(61, 0, 0);
+    color: black;
 }
 
 [data-sidebar] .active-topic li.active-topic {
@@ -66,6 +56,7 @@
 
 [data-toc] {
     grid-area: toc;
+    display: none;
 }
 
 
@@ -97,6 +88,20 @@
   @apply bg-green-900;
   filter: contrast(1.2);
 }
+
+@media  (min-width: 1024px) { 
+    .base-layout {
+        display: grid;
+        grid-template-columns: 18rem 1fr 1fr 18rem;
+        grid-template-rows: max-content;
+        grid-template-areas: 
+            "header header header header"
+            "sidebar main main toc";
+    }
+    [data-toc] {
+        display: block;
+    }
+ }
 
 @tailwind components;
 @tailwind utilities;

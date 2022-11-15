@@ -10,11 +10,13 @@ eleventyNavigation:
 
 ## Install Nix
 
-[Follow the instructions on NixOS.org](https://NixOS.org/download.html#download-nix) to install Nix on your machine.
+**NixOS:** You already have it!
+
+**Others:** [Follow the instructions on nixos.org](https://NixOS.org/download.html#download-nix) to install Nix on your machine.
 
 ## Enable flakes
 
-Flakes are still considered an experimental feature in NixOS, so you will have to enable them.
+Nix flakes are still considered experimental, so you will have to enable them.
 
 NixOS wiki has [instructions on how to enable flakes](https://NixOS.wiki/wiki/Flakes#Enable_flakes).
 

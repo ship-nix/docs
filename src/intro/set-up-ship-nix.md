@@ -8,13 +8,15 @@ eleventyNavigation:
   order: 1
 ---
 
-You can register for ship-nix with email/password or Github auth.
+You can register for ship-nix with email/password or Github login.
 
-There are a few initial steps before you can create a server.
+After registration, there are a few initial steps before you can create a server.
 
-## Github auth
+## Github login
 
-The Github login has a several benefits like quicker login. It also enables ship-nix create new repositories and deploy keys for you.
+The Github login has a several benefits like quicker login.
+
+It also simplifies connecting with Github, so ship-nix can create new repositories and deploy keys for you.
 
 ship-nix **can not delete** repositories.
 

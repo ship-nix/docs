@@ -70,21 +70,6 @@
                       export npm_config_cache=~/.npm
                       echo "Welcome to your nix development shell"
                       echo "Run 'npm run start' to run dev server"
-                      mkdir -p dist/images
-                      cp src/images/*.svg dist/images/
-  
-                      for file in src/images/*.jpg
-                      do
-                        outfile=`basename $file .jpg`.webp
-                        echo convert -verbose -resize 1400x1200\> -quality 80 "'$file'" \
-                        +profile "'*'" "'dist/images/$outfile'"
-                      done | gm batch -echo on -feedback on - && \
-                      for file in src/images/*.png
-                      do
-                        outfile=`basename $file .png`.webp
-                        echo convert -verbose -resize 1400x1200\> -quality 80 "'$file'" \
-                        +profile "'*'" "'dist/images/$outfile'"
-                      done | gm batch -echo on -feedback on -
                     '';
               }
             );
