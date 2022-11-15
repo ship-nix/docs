@@ -9,7 +9,7 @@ eleventyNavigation:
 
 ## User dashboard
 
-You manage account data and manage github login in in your <a target="_blank" href="https://ship-nix.com/ShowUser">user dashboard</a>.
+You manage account data and manage github login in in your <a target="_blank" href="https://shipnix.io/ShowUser">user dashboard</a>.
 
 ## Deleting your account
 

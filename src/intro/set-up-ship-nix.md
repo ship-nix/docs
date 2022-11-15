@@ -1,9 +1,9 @@
 ---
-title: Set up on ship-nix.com
+title: Set up on shipnix.io
 layout: "base.njk"
 eleventyNavigation:
   key: SetUpShipNix
-  title: Set up ship-nix.com
+  title: Set up shipnix.io
   parent: GetStarted
   order: 1
 ---
