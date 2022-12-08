@@ -10,8 +10,8 @@
 <body class="relative">
     <div class="base-layout">
         <header class="md:fixed border-b w-full px-4 bg-white h-[60px] flex justify-between items-center z-50" data-header>
-            <div class="h-7"><a class="font-bold" href="/"><span class="sr-only">Shipnix</span> <img class="w-full h-full" src="/images/logo-transparent.svg"></a></div>
-            <a href="https://shipnix.io">Home</a>
+            <div><a class="font-bold flex items-end justify-start" href="/"><span class="sr-only">Shipnix documentation</span> <img class="h-7 pr-2" src="/images/logo-transparent.svg"> <span>docs</span></a></div>
+            <a class="font-bold" href="https://shipnix.io">Home</a>
         </header>
         <aside class="md:fixed pt-[100px]" data-sidebar>
 {% set navPages = collections.all | eleventyNavigation %}
