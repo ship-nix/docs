@@ -10,13 +10,13 @@
 <body class="relative">
     <div class="base-layout">
         <header class="md:fixed border-b w-full px-4 bg-white h-[60px] flex justify-between items-center z-50" data-header>
-            <a href="/" class="font-bold pt-1">⛵ {{site.name}} docs</a>
+            <div class="h-7"><a class="font-bold" href="/"><span class="sr-only">Shipnix</span> <img class="w-full h-full" src="/images/logo-transparent.svg"></a></div>
             <a href="https://shipnix.io">Home</a>
         </header>
         <aside class="md:fixed pt-[100px]" data-sidebar>
 {% set navPages = collections.all | eleventyNavigation %}
 {% macro renderNavListItem(entry) -%}
-<li{% if entry.url == page.url %} class="active-topic pl-5" {% else %} class="pl-5" {% endif %}>
+<li{% if entry.url == page.url %} class="active-topic pl-5 font-bold" {% else %} class="pl-5" {% endif %}>
   <a href="{{ entry.url }}">{{ entry.title }}</a>
 {%- if entry.children.length -%}
   <ul>
@@ -31,10 +31,10 @@
 </ul>
         </aside>
         <main data-main class="border-x w-full pt-[100px] px-20 min-h-screen">
-            <article class="prose prose-rose max-w-[850px] mx-auto prose-red pb-20">
+            <article class="prose prose-cyan max-w-[850px] mx-auto prose-cyan pb-20">
             
             <h1>{{title}}</h1>
-            <div class="lg:hidden text-sm px-4 text-rose-700">{{ content | toc | safe }}</div>                      
+            <div class="lg:hidden text-sm px-4 text-cyan-700">{{ content | toc | safe }}</div>                      
         
             
             {{ content| safe }}
@@ -42,7 +42,7 @@
         </main>
         
         <aside id="toc" data-toc class="invisible lg:visible md:fixed pt-[100px] right-0 max-w-[18rem] w-full">
-            <div class="max-w-[18rem] text-sm px-4 text-rose-700">{{ content | toc | safe }}</div>
+            <div class="max-w-[18rem] text-sm px-4 text-cyan-700">{{ content | toc | safe }}</div>
         </aside>
     </div>
     <script src="/app.js"></script>
