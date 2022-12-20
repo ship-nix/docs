@@ -5,6 +5,7 @@ eleventyNavigation:
   key: Barebones
   title: Barebones
   parent: Starters
+  order: 2
 ---
 
 The barebones starter is a clean slate to build your own custom NixOS servers.

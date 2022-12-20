@@ -4,6 +4,7 @@ layout: "base.njk"
 eleventyNavigation:
   key: IHP
   parent: Starters
+  order: 3
 ---
 
 IHP is a batteries-included full-stack web framework written in Haskell.

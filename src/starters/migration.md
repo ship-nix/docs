@@ -5,6 +5,7 @@ eleventyNavigation:
   key: Migration
   title: Load existing code
   parent: Starters
+  order: 1
 ---
 
 The `Load existing code on a new server` option is for when you already have code you wish to ship on {{site.name}}.
