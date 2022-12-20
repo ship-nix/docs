@@ -8,7 +8,9 @@ eleventyNavigation:
   order: 4
 ---
 
-The `Mastodon` starter is a very simple starter, but also a quick way to provision your own Mastodon instance on NixOS.
+Don't want to abide by the rules of some other Mastodon instance?
+
+`Mastodon` is simple to set up in NixOS, and {{site.name}} offers a very quick way to provision your own Mastodon instance.
 
 ## Add domain record
 
@@ -20,7 +22,7 @@ On DigitalOcean, it looks like this:
 
 <img src="/images/mastodon-domain-record.webp" />
 
-## Shipnixify a project without {{site.name}} config
+## Make necessary changes in configuration.nix
 
 In your repository, go to `nixos/configuration.nix`, find the `let in` statement at the top.
 
