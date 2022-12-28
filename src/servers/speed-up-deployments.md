@@ -75,7 +75,7 @@ stage.yourapp.com:T0xDDpZbMep2GjjzGDpRk32FkZx/+LZ4eKqPyGI2il8=
 
 ### Note the SSH **public key** of your root user
 
-In this step, we will need to take note of another public key, the one belonging to your root user on your `production` server.
+In this step, we will need to take note of another public key, the one belonging to your root user on your `production` server, which is responsible for rebuilding NixOS.
 
 Start a new ssh session into your `production` server.
 
