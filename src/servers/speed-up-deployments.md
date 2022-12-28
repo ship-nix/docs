@@ -12,6 +12,8 @@ If you want to avoid spending resources on building in your production server on
 
 Some of these strategies can let you ship binaries from your local machine. Others are suited for sharing binaries between servers.
 
+Also consider <a href="https://www.cachix.org/">Cachix</a>, a highly trusted managed Nix binary cache as a service that can take care of all this for you.
+
 <div class="bg-blue-100 rounded-lg py-5 px-6 mb-4 text-base text-blue-700 mb-3" role="alert">
   If you are building a new early-stage project without any current users, we recommend just letting your main server do the job as an all-in-one solution to ship faster and save costs + complexity. Such enhancements can be done later at any time when needed.
 </div>
