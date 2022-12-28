@@ -15,7 +15,7 @@ Some can let you build binaries on your local machine. Others are suited for sha
 <div class="bg-blue-100 rounded-lg py-5 px-6 mb-4 text-base text-blue-700 mb-3" role="alert">
   If you are building a new early-stage project without any current users, we recommend just letting your server do the job to ship faster and save costs. Such enhancements can be done later at any time when needed.
 </div>
-
+<!-- 
 ## Use staging server to speed up builds in production
 
 **This guide will guide you through using a [staging environment](/servers/staging-servers/) as a Nix store with SSH.**
@@ -39,6 +39,12 @@ First, log in to your staging server shell.
 ssh ship@stage.yourapp.com
 ```
 
+Log into root
+
+```
+sudo su root
+```
+
 Create a `binary` folder inside `/etc/shipnix` and cd into it.
 
 ```
@@ -50,20 +56,18 @@ Next, generate a private and public key pair for your packages. Replace `stage.y
 
 ```
 nix-store --generate-binary-cache-key stage.yourapp.com cache-priv-key.pem cache-pub-key.pem
-chown nix-ssh cache-priv-key.pem
-chmod 600 cache-priv-key.pem
 ```
 
 Print the contents of your **public key** and for example copy and paste it into an intermediate text document.
 
 ```sh
 $ cat cache-pub-key.pem
-stage.yourapp.com:mB9FSh9.......Yg3Fs=
+stage.yourapp.com:T0xDDpZbMep2GjjzGDpRk32FkZx/+LZ4eKqPyGI2il8=
 ```
 
 ### Note the SSH **public key** of your root user
 
-Next, exit your staging sever shell and log into your `production server`.
+Next, **exit your staging sever shell** and log into your `production server`.
 
 ```
 ssh ship@yourapp.com
@@ -74,7 +78,7 @@ Log into the root user and print the contents of the **public key** file, and al
 ```sh
 $ sudo su root
 $ cat /root/.ssh/id_rsa.pub
-ssh-rsa AAAAB7.....lRprYrxVovLdsdIekNosYxcrhtoTe7vyTOUT6xc=
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCWT75hPseOBJUWDRZIzrGkNcubS1D+g1hTf72nKr9sUxVA8nLfGE6WAIjOW+bLHdWQXjJH5Bhodv5t6bpY1sBi3NuQq4xcH3yGd52SlzE5dgGl4psRdA+VQXpHfsnrjZ+6LPVBVdaZjdHgq7IR1b7rOBJCtdBJXSjNyZvagghBPKe4a+4Unpg+Y09+/p0BkaNHZmpVc43OHuC4drMpnqWiqNtMoq6gqAL5Ifu+FQHG3JGHLi/QUS2ee667IiIXYX9w4BMB1+W1Rle+PvpJwWuIj12DufAUWceOzk1iipAPgKvFYs6ZC+0Ldyczu+upQBTXHmKtRaS9bdQjSg72v3eAOymMNAeKZlLo3+VhxfAh7BpQ7ER6xy7hStbYjerIWdxx/WLgoGqUOkUBMynxOP3pWZTyb4BBdSObaFJ9O2F1XlmxRg3s+hb/pqqprxuJ8iT5T8uuLi6TyeB7auXF0g/T40CPCVwCPthY9Z9pSZ9zIpv8beaWiakvs7RbYz8d6OE= ship@yourapp
 ```
 
 The next steps will be done in your NixOS configuration in your project repository.
@@ -91,7 +95,7 @@ Also note `nix.extraOptions` where you declare your secret key file.
   nix.sshServe.enable = if environment == "stage" then true else false;
   nix.sshServe.keys =
     if environment == "stage" then [
-      "ssh-rsa AAAAB7.....lRprYrxVovLdsdIekNosYxcrhtoTe7vyTOUT6xc="
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCWT75hPseOBJUWDRZIzrGkNcubS1D+g1hTf72nKr9sUxVA8nLfGE6WAIjOW+bLHdWQXjJH5Bhodv5t6bpY1sBi3NuQq4xcH3yGd52SlzE5dgGl4psRdA+VQXpHfsnrjZ+6LPVBVdaZjdHgq7IR1b7rOBJCtdBJXSjNyZvagghBPKe4a+4Unpg+Y09+/p0BkaNHZmpVc43OHuC4drMpnqWiqNtMoq6gqAL5Ifu+FQHG3JGHLi/QUS2ee667IiIXYX9w4BMB1+W1Rle+PvpJwWuIj12DufAUWceOzk1iipAPgKvFYs6ZC+0Ldyczu+upQBTXHmKtRaS9bdQjSg72v3eAOymMNAeKZlLo3+VhxfAh7BpQ7ER6xy7hStbYjerIWdxx/WLgoGqUOkUBMynxOP3pWZTyb4BBdSObaFJ9O2F1XlmxRg3s+hb/pqqprxuJ8iT5T8uuLi6TyeB7auXF0g/T40CPCVwCPthY9Z9pSZ9zIpv8beaWiakvs7RbYz8d6OE= ship@yourapp"
     ] else [ ];
   nix.extraOptions =
     if environment == "stage" then ''
@@ -99,20 +103,18 @@ Also note `nix.extraOptions` where you declare your secret key file.
     '' else "";
 ```
 
-If you have `site.nix` file, check first if you already have `nix.settings.substituters` and `nix.settings.trusted-public-keys` declarations there and just update these.
-
-Otherwise, you can just as well put it into your `configuration.nix`, it doesn't matter.
+Also add the rules below to your configuration.nix.
 
 Replace `ssh://stage.yourapp.com` with your server, and paste in the public key you noted earlier that is used to sign your Nix packages:
 
 ```nix
   nix.settings.substituters =
     if environment == "production" then [
-      "ssh://stage.yourapp.com"
+      "ssh://nix-ssh@stage.yourapp.com"
     ] else [];
   nix.settings.trusted-public-keys =
     if environment == "production" then [
-      "stage.yourapp.com:mB9FSh9.......Yg3Fs="
+      "stage.yourapp.com:T0xDDpZbMep2GjjzGDpRk32FkZx/+LZ4eKqPyGI2il8="
     ] else [];
 ```
 
@@ -120,4 +122,4 @@ This should be all there is to it.
 
 First deploy your staging server through the server dashboard.
 
-When this deploy is finished, try deploying your production server. You should notice a considerable speed-up.
+When this deploy is finished, try deploying your production server. You should notice a considerable speed-up. -->
