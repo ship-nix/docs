@@ -1,5 +1,5 @@
 ---
-title: Speed up deployments
+title: Speed up NixOS deployments
 layout: "base.njk"
 eleventyNavigation:
   key: SpeedUp
@@ -8,50 +8,112 @@ eleventyNavigation:
   order: 9
 ---
 
-A binary cache is a collection of prebuilt binaries that can speed up server build.
+If you want to avoid spending resources on building in your production server on-premise, NixOS has several <a href="https://nixos.org/manual/nix/stable/package-management/sharing-packages.html" target="_blank">neat strategies</a>.
 
-## Binary cache
+<div class="bg-blue-100 rounded-lg py-5 px-6 mb-4 text-base text-blue-700 mb-3" role="alert">
+  If you are building a new early-stage project without any current users, we recommend just letting your server do the job to ship faster and save costs. Such enhancements can be done later at any time when needed.
+</div>
 
-Any NixOS machine can act as a binary cache.
+**This guide will guide you through using a [staging environment](/servers/staging-servers/) as a Nix store through SSH.**
 
-A binary cache can speed up deploys by sharing binaries between NixOS machines.
+The staging server does the building and testing, like a CI. Production just downloads the binaries it needs.
 
-If you have a staging server, you can use it as a binary cache for your production server.
+With this technique, {{site.name}} runs database migrations and ships compiled Elm (> 6.000 loc) and Haskell code (> 16.000 loc) in under a minute to production.
 
-- [Read about binary cache on NixOS Wiki](https://NixOS.wiki/wiki/Binary_Cache)
+## Build only once with a staging server
 
-## Use staging server as a binary cache
+This lets you build only once and deploy your production server in a blink. This can replace the need for a CI server.
 
-If you have a staging server, it's not only useful for testing before pushing to production.
+We will assume the following:
 
-A staging server can also function as a Nix binary cache, so your production server can download the binaries that were built.
+- You have a production server on {{site.name}} named `yourapp` under the domain `yourapp.com`
+- You have a staging server named `yourapp-stage` under the domain `stage.yourapp.com`
 
-This is beneficial since it will require minimal RAM and CPU to rebuild in production.
+## Sign packages with a private/public key pair
 
-- [Read instructions from NixOS wiki on how to set up a binary cahce](https://NixOS.wiki/wiki/Binary_Cache)
+First, log in to your staging server shell.
 
-## Managed binary caches
-
-If you want to host your binary caches through an external service, <a target="_blank" href="https://www.cachix.org/">Cachix</a> offers "binary cache as a service".
-
-<!-- ### nix-copy-closure
-
-You can prebuild a project on your local machine, and then send store-fresh builds to your server with <a target="_blank" href="https://NixOS.org/manual/nix/stable/command-ref/nix-copy-closure.html">nix-copy-closure</a>.
-
-First build in a project with
-
-```bash
-nix build
+```
+ssh ship@stage.yourapp.com
 ```
 
-Then run nix-copy-closure to send the binaries to your server.
+Make a `binary` folder inside `/etc/shipnix` and cd into it.
 
-```bash
-nix-copy-closure --to ship@yourserver.com result
+```
+mkdir -p /etc/shipnix/binary
+cd /etc/shipnix/binary
 ```
 
-This technique can for example be useful for Haskell servers because you can pre-compile on you local more powerful machine and save on resources in production. -->
+Next, generate a private and public key pair for your packages. Replace `stage.yourapp.com` with your actual staging server url.
 
-### Resize server
+```
+nix-store --generate-binary-cache-key stage.yourapp.com cache-priv-key.pem cache-pub-key.pem
+chown nix-ssh cache-priv-key.pem
+chmod 600 cache-priv-key.pem
+```
 
-If none of the above technique does not work for you, the server runs out on memory and uses swap a lot, it could be time to resize your server. This will result in a couple of minutes of downtime.
+Print the contents of your **public key** and for example copy and paste it into an intermediate text document.
+
+```
+cat cache-pub-key.pem
+```
+
+## Note the SSH public key of your root user
+
+Next, exit your staging sever shell and log into your `production server`.
+
+```
+ssh ship@yourapp.com
+```
+
+Log into the root user and print the contents of the public key file, and also copy this to your intermediary text document.
+
+```
+sudo su root
+cat /root/.ssh/id_rsa.pub
+```
+
+The next steps will be done in your NixOS configuration in your project repository.
+
+## NixOS configuration
+
+Thanks to the `environment` value defined in your Nix flake, you can have conditional declarations for your staging and production servers.
+
+In your `configuration.nix`, enable the `sshServe` service and copy the SSH key belonging to the root user.
+
+Also note `nix.extraOptions` where you declare your secret key file.
+
+```nix
+  nix.sshServe.enable = if environment == "stage" then true else false;
+  nix.sshServe.keys =
+    if environment == "stage" then [
+      "ssh-rsa AAAAB7.....lRprYrxVovLdsdIekNosYxcrhtoTe7vyTOUT6xc="
+    ] else [ ];
+  nix.extraOptions =
+    if environment == "stage" then ''
+      secret-key-files = /etc/shipnix/binary/cache-priv-key.pem
+    '' else "";
+```
+
+If you have `site.nix` file, check first if you already have `nix.settings.substituters` and `nix.settings.trusted-public-keys` declarations there and just update these.
+
+Otherwise, you can just as well put it into your `configuration.nix`.
+
+Replace `ssh://stage.yourapp.com` with your server, and paste in the public key you noted earlier that is used to sign your Nix packages:
+
+```nix
+  nix.settings.substituters =
+    if environment == "production" then [
+      "ssh://stage.yourapp.com"
+    ] else [];
+  nix.settings.trusted-public-keys =
+    if environment == "production" then [
+      "stage.yourapp.com:mB9FSh9.......Yg3Fs=""
+    ] else [];
+```
+
+This should be all there is to it.
+
+First deploy your staging server on through the server dashboard.
+
+When this deploy is finished, try deploying your production server. You should notice a considerable speed-up.
