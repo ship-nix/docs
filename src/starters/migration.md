@@ -2,7 +2,7 @@
 title: Load existing code on a new server
 layout: "base.njk"
 eleventyNavigation:
-  key: Migration
+  key: MigrationStarter
   title: Load existing code
   parent: Starters
   order: 1
