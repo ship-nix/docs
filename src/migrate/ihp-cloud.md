@@ -12,6 +12,8 @@ If you haven't upgraded your IHP project in a while, we recommend [upgrading](ht
 
 It's also recommended to **turn off** `optimized` mode in your `default.nix` to save initial build time.
 
+For a very small project, one of the cheaper server sizes down at 1GB-2GB RAM should work well. 4GB RAM will probably be sufficient for most IHP Haskell applications. Give it a couple of tries and find a server size that suits you.
+
 ## Provision a new Shipnix server
 
 Since you already have a repository with an IHP project, you need to use the [Load existing code](/starters/migration/) starter.
@@ -116,6 +118,12 @@ Since folder structures can vary, we suggest just inspecting the example reposit
 
 - [Go to repository](https://github.com/ship-nix/ihp-elm-shipnix-example)
 - [Inspect the diff](https://github.com/ship-nix/ihp-elm-shipnix-example/compare/a9c91363794899c24ab9b175bbb23fc63749a9cd...main)
+
+### Full workaround
+
+If nixifying your npm dependencies doesn't fit your usecase, you can also place your build command in the `nixos/scripts/before-rebuild` file in your repository.
+
+You will lose rigid reproducibility throug Nix, but you will gain the freedom to use npm in a similar way as you did before.
 
 ## Add Github repository
 
