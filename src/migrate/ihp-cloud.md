@@ -187,15 +187,15 @@ pg_dump "$IHP_CLOUD_DATABASE_URL" -a --inserts --column-inserts --disable-trigge
 
 After this, you should have a database dump named `MigrationFixtures.sql`.
 
-Next, you could make a script file into the same folder, or just run the commands below line-by-line.
+Next, you could copy the following commands to the server console and run:
 
 ```
 set -o allexport; source /etc/shipnix/.env; set +o allexport &&
 psql $DATABASE_URL -c "drop schema public cascade; create schema public;" &&
 psql $DATABASE_URL -c "CREATE TABLE IF NOT EXISTS schema_migrations (revision BIGINT NOT NULL UNIQUE);" &&
-psql $DATABASE_URL < build/ihp-lib/IHPSchema.sql &&
+psql $DATABASE_URL < /home/ship/server/build/ihp-lib/IHPSchema.sql &&
 psql $DATABASE_URL < /home/ship/server/Application/Schema.sql &&
-psql $DATABASE_URL < MigrationFixtures.sql
+psql $DATABASE_URL < /home/ship/db-migration/MigrationFixtures.sql
 ```
 
 This will reset the current database and load the production data to your server.
