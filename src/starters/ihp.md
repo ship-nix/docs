@@ -9,9 +9,11 @@ eleventyNavigation:
 
 IHP is a batteries-included full-stack web framework written in Haskell.
 
-- [IHP official documentation]()
+- [IHP official documentation](https://ihp.digitallyinduced.com/Guide/index.html)
 
-The IHP starter comes with a fresh IHP project and a self-hosted PostgreSQL server already plugged in.
+Creating a new basic IHP project can be easily done directly from Shipnix with the IHP starter. The IHP starter comes with a fresh IHP project and a self-hosted PostgreSQL server already plugged in.
+
+If you are already hosted at IHP cloud, and want to migrate, we have a [migration guide](/migrate/ihp-cloud).
 
 ## Add a domain and https
 
