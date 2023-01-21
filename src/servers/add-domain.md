@@ -5,7 +5,7 @@ eleventyNavigation:
   key: AddDomain
   title: Domain names
   parent: Servers
-  order: 3
+  order: 5
 ---
 
 Pointing to domains is {{site.name}} is done via the NixOS configuration.

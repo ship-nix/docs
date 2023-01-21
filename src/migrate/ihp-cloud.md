@@ -43,7 +43,7 @@ Follow the instructions on the screen and click **Next** when you have Shipnixif
 
 ## JavaScript bundling (only if you use npm)
 
-**If you don't use npm at all, you can skip this section and proceed to [adding Github repo](#add-github-repository)**
+**If you don't use npm at all, you can skip this whole section and proceed to [adding Github repo](#add-github-repository)**
 
 IHP Cloud supports using `npm` or `npx` in the project `Makefile`. This is more difficult to get properly working in a Nix flake. Therefore we work around it a bit, and get increased purity as a reward for the extra work.
 
@@ -147,9 +147,9 @@ Let Shipnix provision a new database for you, and later you can decide if you wa
 
 <img class="border-2" src="/images/ihp-migration-env-vars.webp">
 
-<span class="text-red-700 font-bold">I repeat. Do NOT modify the `DATABASE_URL` variable.</spam>.
+Make sure the `Default deploy branch` is the same branch where you ran the `shipnixifier` script. So if you ran the script on your `main` branch, the default deploy branch should be `origin/main`.
 
-When you are ready, click Deploy.
+When you are ready, click Deploy. Be prepared that it could take a long time the first time you deploy.
 
 If all went well with the provisioning, you should be able to see your app hosted on Shipnix by entering the server's IP address.
 

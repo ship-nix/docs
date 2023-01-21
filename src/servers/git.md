@@ -5,7 +5,7 @@ eleventyNavigation:
   key: Git
   title: Git
   parent: Servers
-  order: 2
+  order: 4
 ---
 
 ## Enabling unsupported Git provider on your server

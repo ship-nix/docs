@@ -14,11 +14,15 @@ There are two supported use-cases.
 
 ## 1. Import a project that already works with {{site.name}}
 
-After provisioning the server, do the following:
+When you already have a `nixos` folder and a `flake.nix` in your project root that works with Shipnix, **this is the alternative for you**.
+
+After provisioning the "Load existing code" server, do the following:
 
 1. In your code, make sure you have a NixOS configuration that corresponds with your server name given by {{site.name}}.
 
 <img src="/images/server-name.webp" />
+
+Note that the name `text-server-two` needs to be present
 
 ```diff-nix
 {
