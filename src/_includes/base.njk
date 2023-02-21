@@ -13,7 +13,7 @@
             <div><a class="font-bold flex items-end justify-start" href="/"><span class="sr-only">Shipnix documentation</span> <img class="h-7 pr-2" src="/images/logo-transparent.svg"> <span>docs</span></a></div>
             <a class="font-bold" href="https://shipnix.io">Home</a>
         </header>
-        <aside class="md:fixed pt-[100px]" data-sidebar>
+        <aside class="md:fixed pt-[100px] overflow-y-auto h-full w-full" data-sidebar>
 {% set navPages = collections.all | eleventyNavigation %}
 {% macro renderNavListItem(entry) -%}
 <li{% if entry.url == page.url %} class="active-topic pl-5 font-bold" {% else %} class="pl-5" {% endif %}>
