@@ -40,6 +40,7 @@
                 ${pkgs.esbuild}/bin/esbuild $src/src/index.js --bundle --outfile=$out/app.js
                 mkdir -p $out/images
                 cp $src/src/images/*.svg $out/images/
+                cp $src/assets/* $out/
   
                 for file in $src/src/images/*.jpg
                 do

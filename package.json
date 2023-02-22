@@ -8,7 +8,7 @@
     "start:eleventy": "$NODE_PATH/@11ty/eleventy/cmd.js --serve",
     "start:tw": "npx tailwindcss -i src/index.css -o dist/app.css --watch",
     "start:js": "esbuild src/index.js --outfile=dist/app.js --watch --bundle --sourcemap",
-    "start:assets": "cp -r src/images dist"
+    "start:assets": "cp -r src/images dist cp assets/* dist"
   },
   "repository": {
     "type": "git",
