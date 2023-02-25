@@ -1,51 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link id="favicon" rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link id="favicon" rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <title>{{ title }} - Shipnix documentation</title>
-    <link rel="stylesheet" href="/app.css">
+    <link rel="stylesheet" href="/assets/pico.min.css">
+    <link rel="stylesheet" href="/assets/prism-theme.css">
+    <link rel="stylesheet" href="/assets/app.css">
 </head>
-<body class="relative">
-    <div class="base-layout">
-        <header class="md:fixed border-b w-full px-4 bg-white h-[60px] flex justify-between items-center z-50" data-header>
-            <div><a class="font-bold flex items-end justify-start" href="/"><span class="sr-only">Shipnix documentation</span> <img class="h-7 pr-2" src="/images/logo-transparent.svg"> <span>docs</span></a></div>
-            <a class="font-bold" href="https://shipnix.io">Home</a>
-        </header>
-        <aside class="md:fixed pt-[100px] overflow-y-auto h-full w-full" data-sidebar>
-{% set navPages = collections.all | eleventyNavigation %}
-{% macro renderNavListItem(entry) -%}
-<li{% if entry.url == page.url %} class="active-topic pl-5 font-bold" {% else %} class="pl-5" {% endif %}>
-  <a href="{{ entry.url }}">{{ entry.title }}</a>
-{%- if entry.children.length -%}
-  <ul>
-    {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
-  </ul>
-{%- endif -%}
-</li>
-{%- endmacro %}
-
-<ul>
-{%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
-</ul>
-        </aside>
-        <main data-main class="border-x w-full pt-[100px] px-20 min-h-screen">
-            <article class="prose prose-cyan max-w-[850px] mx-auto prose-cyan pb-20">
-            
-            <h1>{{title}}</h1>
-            <div class="lg:hidden text-sm px-4 text-cyan-700">{{ content | toc | safe }}</div>                      
-        
-            
-            {{ content| safe }}
-            </article>
-        </main>
-        
-        <aside id="toc" data-toc class="invisible lg:visible md:fixed pt-[100px] right-0 max-w-[18rem] w-full">
-            <div class="max-w-[18rem] text-sm px-4 text-cyan-700">{{ content | toc | safe }}</div>
-        </aside>
-    </div>
-    <script src="/app.js"></script>
+<body>
+  <header id="site-header" class="container flex justify-between">
+    <a href="/" class="brand"><span class="sr-only">Shipnix documentation</span> 
+      <img class="brand__logo brand__logo--light" src="/assets/logo-transparent.svg">
+      <span>docs</span>
+    </a>
+    <aside id="header-menu">
+      <a class="home-link" href="https://shipnix.io">Back to shipnix.io</a>
+    </aside>
+    
+  </header>
+  <main id="layout" class="container">
+    <aside id="sidebar" role="document">
+      {% set navPages = collections.all | eleventyNavigation %}
+      {% macro renderNavListItem(entry) -%}
+        <li {% if entry.url == page.url %} 
+              class="topic topic--state-active" 
+            {% else %} 
+              class="topic" 
+            {% endif %}
+        >
+          <a href="{{ entry.url }}">{{ entry.title }}</a>
+          {%- if entry.children.length -%}
+            <ul class="subtopic">
+              {%- for child in entry.children %}
+                {{ renderNavListItem(child) }}
+              {% endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {%- endmacro %}
+      <ul>
+        {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
+      </ul>
+    </aside>
+    <article id="main-article"> 
+      <h1>{{title}}</h1>             
+      {{ content| safe }}
+    </article>
+  </main>
+    <script src="/assets/htmx.min.js"></script>
+    <script src="/assets/hyperscript.min.js"></script>
+    <script src="/assets/index.js"></script>
 </body>
 </html>

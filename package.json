@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "Documentation for shipnix.io",
   "scripts": {
-    "start": "$NODE_PATH/concurrently/dist/bin/concurrently.js \"npm run start:eleventy\" \"npm run start:tw\" \"npm run start:js\" ",
+    "start": "npm run start:eleventy",
     "debug": "DEBUG=* $NODE_PATH/@11ty/eleventy/cmd.js",
     "start:eleventy": "$NODE_PATH/@11ty/eleventy/cmd.js --serve",
-    "start:tw": "npx tailwindcss -i src/index.css -o dist/app.css --watch",
-    "start:js": "esbuild src/index.js --outfile=dist/app.js --watch --bundle --sourcemap",
-    "start:assets": "cp -r src/images dist cp assets/* dist"
+    "process-images": "bin/process_images"
   },
   "repository": {
     "type": "git",
@@ -24,13 +22,10 @@
     "@11ty/eleventy": "^0.11.1",
     "@11ty/eleventy-navigation": "^0.3.5",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
-    "@tailwindcss/typography": "^0.5.8",
     "concurrently": "^7.5.0",
     "eleventy-plugin-nesting-toc": "^1.3.0",
     "markdown-it": "^13.0.1",
-    "markdown-it-anchor": "^8.6.5",
-    "tailwindcss": "^3.2.2",
-    "tw-elements": "^1.0.0-alpha12"
+    "markdown-it-anchor": "^8.6.5"
   },
   "main": ".eleventy.js"
 }

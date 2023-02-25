@@ -1,0 +1,99 @@
+article img {
+    border: 1px solid gray;
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+pre code {
+    overflow: auto;
+}
+
+#header-menu {
+    display: flex;
+    align-items: center;
+}
+
+#layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-gap: 1rem;
+    padding-top: 0;
+}
+
+#main-article {
+    margin-top: 0;
+    padding-top: 2rem;
+    overflow: hidden;
+}
+
+#sidebar {
+    padding-top: 1rem;
+}
+
+#site-header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.brand {
+    display: flex;
+    align-items: flex-start;
+    color: var(--contrast);
+}
+
+.brand__logo {
+    width: 100px;
+    margin-right: 0.5rem;
+}
+
+
+.brand:hover {
+    text-decoration: none;
+}
+
+.home-link {
+    font-size: 0.8rem;
+    color: var(--contrast);
+    white-space: nowrap;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.theme-switcher {
+    padding: 0.3rem 0.6rem;
+    margin: 0;
+    font-size: 0.8rem;
+    margin-right: 1rem;
+}
+
+.topic {
+    font-size: 0.7rem;
+    padding: 1px;
+}
+
+.topic--state-active {
+    font-weight: bold;
+}
+
+.subtopic .topic {
+    padding-bottom: 0.1rem;
+}

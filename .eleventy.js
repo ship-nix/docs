@@ -6,9 +6,10 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.addPlugin(pluginTOC);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
+  eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("src/images");
 
   eleventyConfig.setLibrary(
     "md",

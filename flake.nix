@@ -27,7 +27,7 @@
           defaultPackage = pkgs.stdenv.mkDerivation
             {
               name = projectName + "-build";
-              buildInputs = [ pkgs.esbuild pkgs.nodejs pkgs.graphicsmagick ];
+              buildInputs = [ pkgs.graphicsmagick ];
               src = ./.;
               installPhase = ''
                 set -xe
@@ -36,8 +36,6 @@
                 export npm_config_cache=${nodeDependencies}/config-cache
                 mkdir $out
                 ${nodeDependencies}/node_modules/@11ty/eleventy/cmd.js --output $out
-                $src/bin/tailwindcss-linux-x64 -i $src/src/index.css -o $out/app.css --minify
-                ${pkgs.esbuild}/bin/esbuild $src/src/index.js --bundle --outfile=$out/app.js
                 mkdir -p $out/images
                 cp $src/src/images/*.svg $out/images/
                 cp $src/assets/* $out/
@@ -61,7 +59,7 @@
               {
                 name = projectName + "-shell";
                 buildPhase = "";
-                buildInputs = [ pkgs.esbuild pkgs.nodejs pkgs.graphicsmagick ];
+                buildInputs = [ pkgs.esbuild pkgs.graphicsmagick ];
                 src = ./.;
                 shellHook = '' 
                       export NODE_ENV=development

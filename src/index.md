@@ -7,11 +7,13 @@ eleventyNavigation:
   order: 1
 ---
 
-**Shipnix** is a web UI for **NixOS** servers.
+**Shipnix** is a web UI for hosting **NixOS** servers on DigitalOcean.
 
-It simplifies provisioning, self-managing and deploying NixOS servers.
+Shipnix is built for self-hosting with NixOS. giving you immutable, deterministic configurations versioned by git.
 
-You can use Shipnix to create a server with good defaults and host it on DigitalOcean.
+We believe NixOS is just as god an abstraction, if not better, than most managed platforms, and with less platform risk.
+
+Our focus is to deliver a NixOS experience that is as vanilla as possible, and build _around_ NixOS, not make a UI that replaces already declarative code.
 
 ## Official NixOS documentation
 
