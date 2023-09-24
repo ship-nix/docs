@@ -11,7 +11,7 @@ eleventyNavigation:
 
 Shipnix is built for self-hosting with NixOS. giving you immutable, deterministic configurations versioned by git.
 
-We believe NixOS is just as god an abstraction, if not better, than most managed platforms, and with less platform risk.
+Although it's made to be as easy to use as possible, you should get yourself a bit a Nix knowledge, since Shipnix is just a light abstraction.
 
 Our focus is to deliver a NixOS experience that is as vanilla as possible, and build _around_ NixOS, not make a UI that replaces already declarative code.
 
